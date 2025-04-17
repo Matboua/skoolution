@@ -1,6 +1,9 @@
 export default function LoginLeft() {
     return (
-      <div className="md:w-1/2 h-64 md:h-auto bg-blue-800 flex flex-col justify-center relative text-2xl">
+      <div className="md:w-1/2 h-42 md:h-auto bg-blue-800 flex flex-col 
+       justify-center relative text-2xl max-w-full 
+
+">
         {/* Bienvenue */}
         <p className="text-white mt-10 md:mt-30 max-auto md:ml-[130px] text-2xl leading-[normal]
         flex flex-col justify-between md:mb-30 font-min text-center md:text-left 
