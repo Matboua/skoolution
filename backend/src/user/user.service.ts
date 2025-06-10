@@ -4,10 +4,11 @@ import { user } from 'types/userTypes';
 
 @Injectable()
 export class UserService {
-    constructor(private jwtService: JwtService){ }
-    login(payload:user) {
+    constructor(private jwtService: JwtService) { }
+    signup(payload: user) {
         try {
-            return this.jwtService.sign(payload);
+            // add sign up logic befor creating the token 
+            return this.jwtService.sign({ sub: { id: payload.id, role: payload.type } });
         } catch (error) {
             console.log(error);
         }

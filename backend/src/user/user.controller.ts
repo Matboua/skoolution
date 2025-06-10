@@ -1,13 +1,18 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { user } from 'types/userTypes';
+import { signUPDto } from './DTO\'s/signUp.dto.ts';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService) { }
   @Post()
-  Login(@Body() user:user){
-    // return "ok";
-    return this.userService.login(user);
+  signUP(@Body() user: signUPDto) {
+    try {
+      const token = this.userService.signup(user);
+      return token
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
