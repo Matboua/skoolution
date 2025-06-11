@@ -3,6 +3,7 @@ import { JwtModule } from "@nestjs/jwt";
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import * as dotenv from "dotenv"
+import { MailerService } from 'src/mailer/mailer.service';
 dotenv.config();
 
 @Module({
@@ -13,6 +14,6 @@ dotenv.config();
     })
   ],
   controllers: [UserController],
-  providers: [UserService],
+  providers: [UserService,MailerService],
 })
 export class UserModule { }
