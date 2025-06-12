@@ -9,8 +9,9 @@ dotenv.config();
 @Module({
   imports: [UserModule, MailerModule.forRoot({
     transport: {
-      host: process.env.HOST,
+      host: process.env.EMAIL_HOST,
       port:587,
+      secure:false,
       auth: {
         user: process.env.EMAIL_USERNAME,
         pass: process.env.EMAIL_PASSWORD,
@@ -21,3 +22,4 @@ dotenv.config();
   providers: [AppService, MailerService],
 })
 export class AppModule { }
+console.log(process.env.EMAIL_HOST);

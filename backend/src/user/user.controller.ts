@@ -27,7 +27,8 @@ export class UserController {
     }
   }
   @Get()
-  ResetPasswored(){
-    // this.mailer.sendMail("elhoubiyoussef@gmail.com");
+  async ResetPasswored(){
+    await this.mailer.sendMail("elhoubiyoussef@gmail.com");
+    return {id:1}
   }
 }

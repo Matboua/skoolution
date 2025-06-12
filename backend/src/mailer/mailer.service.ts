@@ -4,8 +4,9 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class MailerService {
     constructor(private readonly mailService: mailer) { }
-    sendMail(Resever: string) {
-        const message = `<dev style="margin: 0; padding: 0; background: linear-gradient(to bottom right, #eff6ff, #e0e7ff); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2.5rem 1rem;">
+    async sendMail(Resever: string) {
+        try {
+            const message = `<dev style="margin: 0; padding: 0; background: linear-gradient(to bottom right, #eff6ff, #e0e7ff); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2.5rem 1rem;">
                             <div style="max-width: 28rem; width: 100%; background-color: #ffffff; border-radius: 0.75rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); overflow: hidden;">
                                 <!-- Header Section with Icon -->
                                 <div style="padding: 2rem; text-align: center; background: linear-gradient(to right, #34d399, #14b8a6); border-top-left-radius: 0.75rem; border-top-right-radius: 0.75rem; color: #ffffff;">
@@ -42,11 +43,16 @@ export class MailerService {
                                 </div>
                                     </div>
                                 </div>`
-        this.mailService.sendMail({
-            from: "somemail@gmail.com",
-            to: "elhoubiyoussef@gmail.com",
-            subject: "passwoed reset mail",
-            html: message
-        })
+            await this.mailService.sendMail({
+                from: "elhoubiyoussef@gmail.com",
+                to: "elhoubiyoussef@gmail.com",
+                subject: "passwoed reset mail",
+                html: message
+            })
+            // console.log("got here");
+        } catch (error) {
+            console.log("we have an error", error);
+
+        }
     }
 }
