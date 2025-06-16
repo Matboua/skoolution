@@ -1,11 +1,17 @@
-// scripts/create-schema.js
-const fs = require('fs');
-const path = require('path');
+// scripts/create-schema.ts
+import { mkdir, writeFile } from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// ESM-compatible __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const FileName = process.argv[2];
+
 if (!FileName) {
-  console.error('❌ Please provide a schema name');
-  process.exit(1);
+    console.error('❌ Please provide a schema name');
+    process.exit(1);
 }
 
 const className = FileName.charAt(0).toUpperCase() + FileName.slice(1);
@@ -23,8 +29,8 @@ export class ${className} {
 export const ${className}Schema = SchemaFactory.createForClass(${className});
 `;
 
-const dir = `src/${FileName}s/schemas`;
-fs.mkdirSync(dir, { recursive: true });
-fs.writeFileSync(path.join(dir, `${FileName}.schema.ts`), content);
+const dir = path.resolve(__dirname, `../src/${FileName}s/schemas`);
+await mkdir(dir, { recursive: true });
+await writeFile(path.join(dir, `${FileName}.schema.ts`), content);
 
 console.log(`✅ Schema ${className} created at ${dir}`);
