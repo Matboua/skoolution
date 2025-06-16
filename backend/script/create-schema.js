@@ -29,7 +29,7 @@ export class ${className} {
 export const ${className}Schema = SchemaFactory.createForClass(${className});
 `;
 
-const dir = path.resolve(__dirname, `../src/${FileName}/schemas`);
+const dir = path.resolve(__dirname, `../src/schemas`);
 await mkdir(dir, { recursive: true });
 await writeFile(path.join(dir, `${FileName}.schema.ts`), content);
 
