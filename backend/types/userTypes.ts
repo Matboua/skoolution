@@ -6,5 +6,14 @@ export type user = {
     pwd: string;
     ville: string;
     tel: string;
-    type: "Elev"|"Secretaire"|"Super_Admin"|"Parent"|"Enseignant"|"Responsable_Pedagogique";
+    type:userTypes;
 };
+
+export enum userTypes  {
+    Elev="Elev",
+    Secretaire="Secretaire",
+    Super_Admin="Super_Admin",
+    Parent="Parent",
+    Enseignant="Enseignant",
+    Responsable_Pedagogique="Responsable_Pedagogique",
+}

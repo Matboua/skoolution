@@ -16,9 +16,9 @@ if (!FileName) {
 
 const className = FileName.charAt(0).toUpperCase() + FileName.slice(1);
 const content = `import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 
-export type ${className}Document = ${className} & Document;
+export type ${className}Document = HydratedDocument<${className}> ;
 
 @Schema()
 export class ${className} {
