@@ -30,7 +30,7 @@ export class Update${className}Dto {
 }
 `;
 
-const dir = path.resolve(__dirname, `../src/${name}s/dto`);
+const dir = path.resolve(__dirname, `../src/${name}/dto`);
 await mkdir(dir, { recursive: true });
 await writeFile(path.join(dir, `${name}.dto.ts`), content);
 

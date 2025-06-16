@@ -18,8 +18,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "make:schema": "node scripts/create-schema.js",
-    "make:dto": "node scripts/create-dto.js"
+    "make:schema": "node script/create-schema.js",
+    "make:dto": "node script/create-dto.js"
 
   },
   "dependencies": {
