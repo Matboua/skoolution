@@ -9,16 +9,16 @@ export type TokenDocument = HydratedDocument<Token>;
 
 @Schema()
 export class Token {
-  @Prop({ required: true, type: mongoose.Schema.Types.ObjectId })
+  @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: "user" })
   user_ID: User
   @Prop({ required: true })
   token: string
   @Prop({ required: true, type: Date, default: Date.now() })
   date_creation: Date
-  @Prop({ required: true, type: Date,})
+  @Prop({ required: true, type: Date, })
   date_expiration: Date
-  @Prop({required:true,type:userTypes})
-  type:userTypes
+  @Prop({ required: true, type: userTypes })
+  type: userTypes
 }
 
 export const TokenSchema = SchemaFactory.createForClass(Token);
