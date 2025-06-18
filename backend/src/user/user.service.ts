@@ -14,17 +14,21 @@ export class UserService {
     }
     async signup(payload: any) {
         try {
+            const exist = await this.UserModel.find({ mail: payload.mail })
+            if (exist) {
+                return { error: "this email is alredy taken ", success: false }
+            }
             const user = await this.UserModel.create({
                 nom: payload.nom,
                 prenom: payload.prenom,
                 mail: payload.mail,
-                pwd: payload.pwd, 
+                pwd: payload.pwd,
                 ville: payload.ville,
                 tel: payload.tel,
                 type: payload.type,
             })
-            
-            return this.jwtService.sign({ sub: { id: user.id, role: user.type } });
+            const token = this.jwtService.sign({ sub: { id: user.id, role: user.type } });
+            return { success: true, token };
         } catch (error) {
             console.log(error);
         }

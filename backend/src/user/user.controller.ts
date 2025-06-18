@@ -12,8 +12,12 @@ export class UserController {
   @Post("signup")
   async signUP(@Body() user: signUPDto, @Res() res: Response) {
     try {
-      const token = await this.userService.signup(user);
-      return res.status(200).json({token})
+      const response = await this.userService.signup(user);
+      if (response?.success) {
+        return res.status(200).json(response)
+      } else {
+        return res.status(400).json(response)
+      }
     } catch (error) {
       console.log(error);
     }
