@@ -4,6 +4,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from 'src/schemas/user.schema';
 import { user } from 'types/userTypes';
+import { signUPDto } from './DTO\'s/signUp.dto.ts';
+import { HashUtil } from '../../helpers/hash.util.js';
 
 @Injectable()
 export class UserService {
@@ -12,17 +14,19 @@ export class UserService {
         @InjectModel(User.name) private UserModel: Model<UserDocument>
     ) {
     }
-    async signup(payload: any) {
+    async signup(payload: signUPDto) {
         try {
-            const exist = await this.UserModel.find({ mail: payload.mail })
+            const exist = await this.UserModel.findOne({ mail: payload.mail })
             if (exist) {
                 return { error: "this email is alredy taken ", success: false }
             }
+            const {pwd} = payload
+            const hashedPasswored = await HashUtil.hashPassword(pwd);
             const user = await this.UserModel.create({
                 nom: payload.nom,
                 prenom: payload.prenom,
                 mail: payload.mail,
-                pwd: payload.pwd,
+                pwd: hashedPasswored,
                 ville: payload.ville,
                 tel: payload.tel,
                 type: payload.type,
