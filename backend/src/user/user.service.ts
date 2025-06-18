@@ -7,6 +7,7 @@ import { user } from 'types/userTypes';
 import { signUPDto } from './DTO\'s/signUp.dto.ts';
 import { HashUtil } from '../../helpers/hash.util.js';
 import { loginDTO } from './DTO\'s/logIn.dto.js';
+import { ResetPasswordDto } from 'src/dto/ResetPasswordDto.dto.js';
 
 @Injectable()
 export class UserService {
@@ -60,6 +61,24 @@ export class UserService {
             console.log(error);
             return { error: "An error occurred during login", success: false };
         }
+    }
+    async resetPassword(dto: ResetPasswordDto) {
+        const { userId, newPassword, confirmPassword } = dto;
+
+        if (newPassword !== confirmPassword) {
+            return { success: false, error: 'Passwords do not match' };
+        }
+
+        const user = await this.UserModel.findById(userId);
+        if (!user) {
+            return { success: false, error: 'User not found' };
+        }
+
+        const hashed = await HashUtil.hashPassword(newPassword);
+        user.pwd = hashed;
+        await user.save();
+
+        return { success: true, message: 'Password updated successfully' };
     }
 
 }
