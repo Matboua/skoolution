@@ -1,14 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { User, UserDocument } from 'src/schemas/user.schema';
 import { user } from 'types/userTypes';
 
 @Injectable()
 export class UserService {
-    constructor(private jwtService: JwtService) { }
-    signup(payload: user) {
+    constructor(
+        private jwtService: JwtService,
+        @InjectModel(User.name) private UserModel: Model<UserDocument>
+    ) {
+    }
+    async signup(payload: any) {
         try {
-            // add sign up logic befor creating the token 
-            return this.jwtService.sign({ sub: { id: payload.id, role: payload.type } });
+            const user = await this.UserModel.create({
+                nom: payload.nom,
+                prenom: payload.prenom,
+                mail: payload.mail,
+                pwd: payload.pwd, 
+                ville: payload.ville,
+                tel: payload.tel,
+                type: payload.type,
+            })
+            
+            return this.jwtService.sign({ sub: { id: user.id, role: user.type } });
         } catch (error) {
             console.log(error);
         }

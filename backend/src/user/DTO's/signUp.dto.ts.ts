@@ -8,9 +8,6 @@ import {
 } from 'class-validator';
 
 export class signUPDto {
-    @IsInt()
-    id: number;
-
     @IsString()
     @IsNotEmpty()
     nom: string;

@@ -10,9 +10,9 @@ import { MailerService } from 'src/mailer/mailer.service';
 export class UserController {
   constructor(private readonly userService: UserService,private readonly mailer:MailerService) { }
   @Post("signup")
-  signUP(@Body() user: signUPDto, @Res() res: Response) {
+  async signUP(@Body() user: signUPDto, @Res() res: Response) {
     try {
-      const token = this.userService.signup(user);
+      const token = await this.userService.signup(user);
       return res.status(200).json({token})
     } catch (error) {
       console.log(error);
