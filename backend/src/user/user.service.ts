@@ -6,6 +6,7 @@ import { User, UserDocument } from 'src/schemas/user.schema';
 import { user } from 'types/userTypes';
 import { signUPDto } from './DTO\'s/signUp.dto.ts';
 import { HashUtil } from '../../helpers/hash.util.js';
+import { loginDTO } from './DTO\'s/logIn.dto.js';
 
 @Injectable()
 export class UserService {
@@ -20,7 +21,7 @@ export class UserService {
             if (exist) {
                 return { error: "this email is alredy taken ", success: false }
             }
-            const {pwd} = payload
+            const { pwd } = payload
             const hashedPasswored = await HashUtil.hashPassword(pwd);
             const user = await this.UserModel.create({
                 nom: payload.nom,
@@ -37,13 +38,28 @@ export class UserService {
             console.log(error);
         }
     }
-    login() {
+    async login(payload: loginDTO) {
         try {
-            // mkae the rest of the of the logic here 
-            const user = { id: 12323, type: "something " }
-            return this.jwtService.sign({ sub: { id: user.id, role: user.type } });
+            const user = await this.UserModel.findOne({ mail: payload.email });
+
+            if (!user) {
+                return { error: "Email not found", success: false };
+            }
+
+            const isMatch = await HashUtil.comparePasswords(payload.pwd, user.pwd);
+            if (!isMatch) {
+                return { error: "Invalid password", success: false };
+            }
+
+            const token = this.jwtService.sign({
+                sub: { id: user.id, role: user.type },
+            });
+
+            return { success: true, token };
         } catch (error) {
             console.log(error);
+            return { error: "An error occurred during login", success: false };
         }
     }
+
 }

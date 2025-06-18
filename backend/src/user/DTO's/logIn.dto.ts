@@ -5,5 +5,5 @@ export class loginDTO{
     email:string;
     @IsString()
     @Length(8,20)
-    pws:string
+    pwd:string
 }
