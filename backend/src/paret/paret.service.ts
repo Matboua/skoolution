@@ -4,41 +4,56 @@ import { Parent, ParentDocument } from 'src/schemas/parent.schema';
 import { Model } from 'mongoose';
 import { User, UserDocument } from 'src/schemas/user.schema';
 import { CreateParentDto } from "../dto/parent.dto"
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class ParetService {
   constructor(
     @InjectModel(Parent.name) private ParentModel: Model<ParentDocument>,
-    @InjectModel(User.name) private UserModel: Model<UserDocument>
+    @InjectModel(User.name) private UserModel: Model<UserDocument>,
+    private jwtservice: JwtService
   ) { }
-  create(createParetDto: CreateParentDto) {
+  async create(createParetDto: CreateParentDto) {
     try {
-      const user = this.UserModel.findOne({
+      const user = await this.UserModel.findOne({
         _id: createParetDto.id
       })
       if (!user) {
         return { success: false, error: "User not found" };
       }
-      const parent = this.ParentModel.create({
+      const parent = await this.ParentModel.create({
         user_ID: createParetDto.id,
         address: createParetDto.address
       });
       if (!parent) {
         return { success: false, error: "Parent creation failed" };
       }
-      return { success: true, parent };
+      const token = this.jwtservice.sign({
+        sub: { id: user._id, role: user.type },
+      });
+      return { success: true, token, parent: parent };
     } catch (error) {
       console.log(error);
       return { error: "An error occurred while creating the parent", success: false };
     }
   }
 
-  findAll() {
-    return `This action returns all paret`;
+  async findAll() {
+    try {
+      const Parents = await this.ParentModel.find().populate("user_ID");
+      return { success: true, Parents };
+    } catch (error) {
+      console.log(error);
+      return { error: "An error occurred while creating the parent", success: false };
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} paret`;
+  async findOne(id: string) {
+    const parent = this.ParentModel.findById(id).populate("user_ID");
+    if (!parent) {
+      return { success: false, error: "Parent not found" };
+    }
+    return { success: true, parent };
   }
 
   update(id: number,) {
