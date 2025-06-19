@@ -1,11 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateParetDto } from './dto/create-paret.dto';
-import { UpdateParetDto } from './dto/update-paret.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Parent, ParentDocument } from 'src/schemas/parent.schema';
 import { Model } from 'mongoose';
 import { User, UserDocument } from 'src/schemas/user.schema';
-import { Mode } from 'fs';
+import { CreateParentDto } from "../dto/parent.dto"
 
 @Injectable()
 export class ParetService {
@@ -13,8 +11,26 @@ export class ParetService {
     @InjectModel(Parent.name) private ParentModel: Model<ParentDocument>,
     @InjectModel(User.name) private UserModel: Model<UserDocument>
   ) { }
-  create(createParetDto: CreateParetDto) {
-    return 'This action adds a new paret';
+  create(createParetDto: CreateParentDto) {
+    try {
+      const user = this.UserModel.findOne({
+        _id: createParetDto.id
+      })
+      if (!user) {
+        return { success: false, error: "User not found" };
+      }
+      const parent = this.ParentModel.create({
+        user_ID: createParetDto.id,
+        address: createParetDto.address
+      });
+      if (!parent) {
+        return { success: false, error: "Parent creation failed" };
+      }
+      return { success: true, parent };
+    } catch (error) {
+      console.log(error);
+      return { error: "An error occurred while creating the parent", success: false };
+    }
   }
 
   findAll() {
@@ -25,7 +41,7 @@ export class ParetService {
     return `This action returns a #${id} paret`;
   }
 
-  update(id: number, updateParetDto: UpdateParetDto) {
+  update(id: number,) {
     return `This action updates a #${id} paret`;
   }
 

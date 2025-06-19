@@ -10,10 +10,6 @@ dotenv.config();
 
 @Module({
   imports: [
-    JwtModule.register({
-      secret: process.env.JWTKEY,
-      signOptions: { expiresIn: "1s" }
-    }),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])
   ],
   controllers: [UserController],

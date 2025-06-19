@@ -8,6 +8,7 @@ import { MongooseModule } from "@nestjs/mongoose"
 import { StudentModule } from './student/student.module';
 import { ParetModule } from './paret/paret.module';
 import * as dotenv from "dotenv";
+import { JwtModule } from '@nestjs/jwt';
 dotenv.config();
 @Module({
   imports: [UserModule, MailerModule.forRoot({
@@ -20,7 +21,12 @@ dotenv.config();
         pass: process.env.EMAIL_PASSWORD,
       },
     },
-  }),MongooseModule.forRoot("mongodb://localhost:27017/"), StudentModule, ParetModule],
+  }), MongooseModule.forRoot("mongodb://localhost:27017/"), StudentModule, ParetModule,
+    JwtModule.register({
+      global: true,
+      secret: process.env.JWTKEY,
+      signOptions: { expiresIn: "1s" }
+    })],
   controllers: [AppController],
   providers: [AppService, MailerService],
 })
