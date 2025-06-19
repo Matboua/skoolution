@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Parent, ParentDocument } from 'src/schemas/parent.schema';
 import { Model } from 'mongoose';
 import { User, UserDocument } from 'src/schemas/user.schema';
-import { CreateParentDto } from "../dto/parent.dto"
+import { CreateParentDto, UpdateParentDto } from "../dto/parent.dto"
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
@@ -56,8 +56,17 @@ export class ParetService {
     return { success: true, parent };
   }
 
-  update(id: number,) {
-    return `This action updates a #${id} paret`;
+  update(id: number,ParentDto: UpdateParentDto) {
+    try {
+      const updatedParent = this.ParentModel.findByIdAndUpdate(id, ParentDto, { new: true }).populate("user_ID");
+      if (!updatedParent) {
+        return { success: false, error: "Parent not found" };
+      }
+      return { success: true, parent: updatedParent };
+    } catch (error) {
+      console.log(error);
+      return { error: "An error occurred while updating the parent", success: false };
+    }
   }
 
   remove(id: number) {
