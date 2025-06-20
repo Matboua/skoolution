@@ -52,4 +52,16 @@ export class StudentService {
             return { success: false, message: 'Error finding student', error: error.message };
         }
     }
+    async findAllStudents() {
+        try {
+            const students = await this.StudentModel.find().populate('id_parent').populate('ecole').populate('annee_scolaire_id');
+            if (!students || students.length === 0) {
+                return { success: false, message: 'No students found' };
+            }
+            return { success: true, students };
+        } catch (error) {
+            console.log(error);
+            return { success: false, message: 'Error finding students', error: error.message };
+        }
+    }
 }
