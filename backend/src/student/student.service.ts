@@ -80,4 +80,16 @@ export class StudentService {
             return { success: false, message: 'Error updating student', error: error.message };
         }
     }
+    async deleteStudent(id: string) {
+        try {
+            const deletedStudent = await this.StudentModel.findOneAndDelete({ user_ID: id });
+            if (!deletedStudent) {
+                return { success: false, message: 'Error deleting student' };
+            }
+            return { success: true, message: 'Student deleted successfully' };
+        } catch (error) {
+            console.log(error);
+            return { success: false, message: 'Error deleting student', error: error.message };
+        }
+    }
 }
