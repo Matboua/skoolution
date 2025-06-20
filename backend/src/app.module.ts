@@ -10,6 +10,7 @@ import { ParetModule } from './paret/paret.module';
 import * as dotenv from "dotenv";
 import { JwtModule } from '@nestjs/jwt';
 import { AnneeScolaireModule } from './annee_scolaire/annee_scolaire.module';
+import { NiveauModule } from './niveau/niveau.module';
 dotenv.config();
 @Module({
   imports: [UserModule, MailerModule.forRoot({
@@ -28,7 +29,8 @@ dotenv.config();
       secret: process.env.JWTKEY,
       signOptions: { expiresIn: "1s" }
     }),
-    AnneeScolaireModule],
+    AnneeScolaireModule,
+    NiveauModule],
   controllers: [AppController],
   providers: [AppService, MailerService],
 })
