@@ -56,7 +56,7 @@ export class ParetService {
     return { success: true, parent };
   }
 
-  update(id: number,ParentDto: UpdateParentDto) {
+  update(id: string,ParentDto: UpdateParentDto) {
     try {
       const updatedParent = this.ParentModel.findByIdAndUpdate(id, ParentDto, { new: true }).populate("user_ID");
       if (!updatedParent) {
