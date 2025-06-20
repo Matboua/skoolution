@@ -56,9 +56,9 @@ export class ParetService {
     return { success: true, parent };
   }
 
-  update(id: string,ParentDto: UpdateParentDto) {
+  async update(id: string, ParentDto: UpdateParentDto) {
     try {
-      const updatedParent = this.ParentModel.findByIdAndUpdate(id, ParentDto, { new: true }).populate("user_ID");
+      const updatedParent = await this.ParentModel.findByIdAndUpdate(id, ParentDto, { new: true }).populate("user_ID");
       if (!updatedParent) {
         return { success: false, error: "Parent not found" };
       }

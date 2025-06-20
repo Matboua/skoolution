@@ -17,15 +17,30 @@ export class ParetController {
     }
   }
   @Get('all')
-  findAll() {
-    return this.paretService.findAll();
+  async findAll(@Res() res: Response) {
+    const response = await this.paretService.findAll();
+    if (response.success) {
+      return res.status(200).json(response);
+    } else {
+      return res.status(400).json(response);
+    }
   }
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.paretService.findOne(id);
+  async findOne(@Param('id') id: string, @Res() res: Response) {
+    const response = await this.paretService.findOne(id);
+    if (response.success) {
+      return res.status(200).json(response);
+    } else {
+      return res.status(404).json(response);
+    }
   }
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateParetDto: UpdateParentDto) {
-    return this.paretService.update(id, updateParetDto);
+  async update(@Param('id') id: string, @Body() updateParetDto: UpdateParentDto, @Res() res: Response) {
+    const response =  await this.paretService.update(id, updateParetDto);
+    if (response.success) {
+      return res.status(200).json(response);
+    } else {
+      return res.status(400).json(response);
+    }
   }
 }
