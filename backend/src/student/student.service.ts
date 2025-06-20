@@ -64,4 +64,20 @@ export class StudentService {
             return { success: false, message: 'Error finding students', error: error.message };
         }
     }
+    async updateStudent(id: string, studentData: CreateStudentDto) {
+        try {
+            const updatedStudent = await this.StudentModel.findOneAndUpdate(
+                { user_ID: id },
+                studentData,
+                { new: true }
+            );
+            if (!updatedStudent) {
+                return { success: false, message: 'Error updating student' };
+            }
+            return { success: true, message: 'Student updated successfully', student: updatedStudent };
+        } catch (error) {
+            console.log(error);
+            return { success: false, message: 'Error updating student', error: error.message };
+        }
+    }
 }
