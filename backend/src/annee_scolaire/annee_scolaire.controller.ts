@@ -1,34 +1,60 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Res } from '@nestjs/common';
 import { AnneeScolaireService } from './annee_scolaire.service';
 import { CreateAnneeScolaireDto } from './dto/create-annee_scolaire.dto';
 import { UpdateAnneeScolaireDto } from './dto/update-annee_scolaire.dto';
+import { Response } from 'express';
 
 @Controller('annee-scolaire')
 export class AnneeScolaireController {
-  constructor(private readonly anneeScolaireService: AnneeScolaireService) {}
+  constructor(private readonly anneeScolaireService: AnneeScolaireService) { }
 
   @Post()
-  create(@Body() createAnneeScolaireDto: CreateAnneeScolaireDto) {
-    return this.anneeScolaireService.create(createAnneeScolaireDto);
+  async create(@Body() createAnneeScolaireDto: CreateAnneeScolaireDto, @Res() res: Response) {
+    const response = await this.anneeScolaireService.create(createAnneeScolaireDto);
+    if (response.success) {
+      return res.status(201).json(response);
+    } else {
+      return res.status(400).json(response);
+    }
   }
 
-  @Get()
-  findAll() {
-    return this.anneeScolaireService.findAll();
+  @Get("all")
+  async findAll(@Res() res: Response) {
+    const response = await this.anneeScolaireService.findAll();
+    if (response.success) {
+      return res.status(200).json(response);
+    } else {
+      return res.status(400).json(response);
+    }
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.anneeScolaireService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const response = await this.anneeScolaireService.findOne(+id);
+    if (response.success) {
+      return response;
+    } else {
+      return { success: false, error: response.error };
+    }
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAnneeScolaireDto: UpdateAnneeScolaireDto) {
-    return this.anneeScolaireService.update(+id, updateAnneeScolaireDto);
+  async update(@Param('id') id: string, @Body() updateAnneeScolaireDto: UpdateAnneeScolaireDto) {
+    const response = await this.anneeScolaireService.update(+id, updateAnneeScolaireDto);
+    if (response.success) {
+      return response;
+    } else {
+      return { success: false, error: response.error };
+    }
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.anneeScolaireService.remove(+id);
+  async remove(@Param('id') id: string) {
+    const response = await this.anneeScolaireService.remove(id);
+    if (response.success) {
+      return response;
+    } else {
+      return { success: false, error: response.error };
+    }
   }
 }
