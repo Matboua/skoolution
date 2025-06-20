@@ -40,4 +40,16 @@ export class StudentService {
             return { success: false, message: 'Error creating account', error: error.message };
         }
     }
+    async findStudentById(id: string) {
+        try {
+            const student = await this.StudentModel.findOne({ user_ID: id }).populate('id_parent').populate('ecole').populate('annee_scolaire_id');
+            if (!student) {
+                return { success: false, message: 'Student not found' };
+            }
+            return { success: true, student };
+        } catch (error) {
+            console.log(error);
+            return { success: false, message: 'Error finding student', error: error.message };
+        }
+    }
 }
