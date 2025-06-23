@@ -1,6 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { QuestionSource } from 'types/schema.types';  
+import { User } from './user.schema';
+import { Competence } from './Competence.schema';
 
 @Schema({ timestamps: true })
 export class Question extends Document {
@@ -60,13 +62,13 @@ export class Question extends Document {
   incorrectCount: number;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User', required: true })
-  teacher: MongooseSchema.Types.ObjectId;
+  teacher:User;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Subject', required: true })
   domaine: MongooseSchema.Types.ObjectId;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Competency', required: true })
-  competence: MongooseSchema.Types.ObjectId;
+  competence: Competence;
 
   @Prop({ type: String, required: true })
   sousCompetence: string;
