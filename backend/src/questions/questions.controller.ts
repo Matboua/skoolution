@@ -1,7 +1,6 @@
 import { Body, Controller, Post, Req, UseGuards, Get, Query, Param } from '@nestjs/common';
 import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 export class AdaptiveResponseDto {
   sessionId: string;
@@ -12,8 +11,6 @@ export class AdaptiveResponseDto {
 @Controller('questions')
 export class QuestionsController {
   constructor(private readonly questionsService: QuestionsService) {}
-
-  @UseGuards(JwtAuthGuard)
   @Post()
   async create(@Body() dto: CreateQuestionDto, @Req() req) {
     return this.questionsService.create({
@@ -21,8 +18,6 @@ export class QuestionsController {
       teacher: req.user._id,
     } as any);
   }
-
-  @UseGuards(JwtAuthGuard)
   @Post('bulk')
   async createBulk(@Body() dtos: CreateQuestionDto[], @Req() req) {
     const teacherId = req.user._id;
@@ -32,20 +27,14 @@ export class QuestionsController {
     } as any));
     return this.questionsService.createMany(questions);
   }
-
-  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(@Req() req) {
     return this.questionsService.findByTeacher(req.user._id);
   }
-
-  @UseGuards(JwtAuthGuard)
   @Get('all')
   async findAllPopulated() {
     return this.questionsService.findAllPopulated();
   }
-
-  @UseGuards(JwtAuthGuard)
   @Get('test-auth')
   async testAuth(@Req() req) {
     return {
@@ -55,8 +44,6 @@ export class QuestionsController {
       role: req.user.role
     };
   }
-
-  @UseGuards(JwtAuthGuard)
   @Get('quiz')
   async getQuizQuestions(@Query('sousCompetenceId') sousCompetenceId: string, @Query('limit') limit: string) {
     return this.questionsService.findBySousCompetence(sousCompetenceId, Number(limit) || 20);
@@ -64,7 +51,6 @@ export class QuestionsController {
 
   // ===== ADAPTIVE TESTING ENDPOINTS =====
 
-  @UseGuards(JwtAuthGuard)
   @Post('adaptive/initialize')
   async initializeAdaptiveTest(
     @Body() body: { sousCompetenceId: string; maxQuestions?: number; subjectId: string },
@@ -85,7 +71,6 @@ export class QuestionsController {
     );
   }
 
-  @UseGuards(JwtAuthGuard)
   @Post('adaptive/response')
   async submitAdaptiveResponse(@Body() dto: AdaptiveResponseDto) {
     const result = await this.questionsService.processAdaptiveResponse(
@@ -103,7 +88,6 @@ export class QuestionsController {
     return result;
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('adaptive/session/:sessionId')
   async getAdaptiveSession(@Param('sessionId') sessionId: string) {
     const session = this.questionsService.getAdaptiveSession(sessionId);
