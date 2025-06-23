@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
-import { Question } from './schemas/question.schema';
+import { Question } from '../schemas/question.schema';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { AdaptiveQuizAnalyticsService } from '../adaptive-quiz/adaptive-quiz-analytics.service';
 import { AdaptiveQuizSession } from '../adaptive-quiz/schemas/adaptive-quiz-session.schema';

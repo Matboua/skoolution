@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { QuestionSource } from '../../types/schema.types';
+import { QuestionSource } from 'types/schema.types';  
 
 @Schema({ timestamps: true })
 export class Question extends Document {
