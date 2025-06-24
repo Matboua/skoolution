@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { IQuizResponse } from '../../types/schema.types';
+import { IQuizResponse } from '../../../types/schema.types';
 
 @Schema({ timestamps: true })
 export class StudentQuiz extends Document {
