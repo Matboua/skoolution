@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import bgImage from "@/public/assets/signInImage1.png"; 
 export default function LoginPage() {
 	return (
 		<div className="min-h-screen flex flex-col md:flex-row h-screen">
 			{/* Login Form */}
-			<div className="md:w-1/2 h-64 md:h-auto bg-blue-800 flex flex-col justify-center relative text-2xl">
+			<div className="md:w-1/2 h-64 md:h-auto bg-blue-800 flex flex-col justify-center relative text-2xl bg-center bg-cover "
+			style={{ backgroundImage: `url(${bgImage.src})` }}
+			>
 				{/* Bienvenue */}
 				<p
 					className="text-white mt-10 md:mt-30 max-auto md:ml-[130px] text-2xl leading-[normal]
