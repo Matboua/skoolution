@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import bgImage from "@/public/assets/signInImage1.png";
+import bgImage from "@/public/assets/signInImage2.png";
 export default function LoginPage() {
     return (
         <div className="min-h-screen flex flex-col md:flex-row h-screen">
@@ -20,7 +20,7 @@ export default function LoginPage() {
                 {/* SKOOLUTION */}
                 <div
                     className="flex items-center font-bold text-[30px] sm:text-[40px] md:text-[50px] mx-auto md:ml-[130px]
-         w-full md:w-auto mt-10 sm:mt-5 md:mt-20 text-center md:text-left ml-22  "
+          md:w-auto mt-10 sm:mt-5 md:mt-20 text-center md:text-left ml-22  "
                 >
                     <span className="bg-white text-blue-800 px-2">SK</span>
                     <span className="text-white ml-0.5">OOLUTION</span>
@@ -37,64 +37,56 @@ export default function LoginPage() {
             {/* Login Left */}
             <div className="w-full max-w-md mx-auto p-4 md:p-1 mt-30">
                 <h1
-                    className="sm:text-6xl md:text-7xl g:text-10xl text-5xl font-bold mb-2 whitespace-nowrap
+                    className="sm:text-4xl md:text-5xl g:text-10xl text-5xl font-bold mb-2 whitespace-nowrap
             text-center md:text-left md:mr-0 "
                 >
-                    Se Connecter
+                    S’inscrire
                 </h1>
-                <p className="text-sm mb-6 text-center md:text-left mt-5 pt-5 text-gray-500  ">
+                <p className="text-sm text-center md:text-left  text-gray-500  ">
                     Veuillez entrer vos informations!
                 </p>
 
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div class="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
+                    <div class="h-1 flex-1 max-w-20 bg-blue-500 rounded-2xl"></div>
+                    <div class="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
+                    <div class="h-1 flex-1 max-w-20 bg-blue-500 rounded-2xl"></div>
+                    <div class="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
+                </div>
+
                 <form className="space-y-4 mt-5">
                     <div className=" relative">
-                        <p className="ml-5 text-gray-500"> adresse email</p>
-                        <Image
-                            src="/sk/Vector.svg"
-                            alt="email"
-                            width={24}
-                            height={24}
-                            className="absolute ml-5 mt-3 "
-                        />
+                        <p className="ml-5 text-gray-500"> Nom complet</p>
                         <input
                             type="email"
-                            placeholder=" | Ecrivez votre email ici..."
+                            placeholder="Ecrivez votre Nom..."
                             className="w-full border  py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-12"
                         />
                     </div>
 
                     <div className="relative">
                         <p className="ml-5 text-gray-500">Mot de passe</p>
-                        <Image
-                            src="/sk/Vector2.svg"
-                            alt="password"
-                            width={24}
-                            height={24}
-                            className="absolute ml-5 mt-2 w-5"
-                        />
                         <input
                             type="password"
-                            placeholder="| Ecrivez votre mot de passe ici..."
+                            placeholder="Ecrivez votre Nom..."
                             className="w-full border py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-12"
                         />
                     </div>
 
-                    <div className="flex items-center justify-between text-sm">
-                        <label className="flex items-center">
-                            <input type="checkbox" className="mr-2 rounded accent-blue-500" />
-                            <span className="text-gray-500">Se souvenir de moi</span>
-                        </label>
-                        <a href="#" className="text-blue-600 hover:underline">
-                            Mot de passe oublié ?
-                        </a>
+                    <div className=" flex justify-between gap-1">
+                        <button
+                            type="submit"
+                            className="w-full text-[#054BB4] border-2  border-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition"
+                        >
+                            Se Connecter
+                        </button>
+                        <button
+                            type="submit"
+                            className="w-full bg-[#0047BA] text-white py-2 rounded-md hover:bg-gray-300 transition"
+                        >
+                            Se Connecter
+                        </button>
                     </div>
-
-                    <button
-                        type="submit"
-                        className="w-full bg-[#0047BA] text-white py-2 rounded-md hover:bg-gray-300 transition"
-                    >
-                        Se Connecter
-                    </button>
 
                     <div className="flex items-center my-4">
                         <hr className="flex-grow border-gray-300" />
