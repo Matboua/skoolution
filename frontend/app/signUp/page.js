@@ -47,11 +47,11 @@ export default function LoginPage() {
                 </p>
 
                 <div class="flex items-center justify-between flex-wrap gap-4">
-                    <div class="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
-                    <div class="h-1 flex-1 max-w-20 bg-blue-500 rounded-2xl"></div>
-                    <div class="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
-                    <div class="h-1 flex-1 max-w-20 bg-blue-500 rounded-2xl"></div>
-                    <div class="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
+                    <div className="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
+                    <div className="h-1 flex-1 max-w-20 bg-blue-500 rounded-2xl"></div>
+                    <div className="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
+                    <div className="h-1 flex-1 max-w-20 bg-blue-500 rounded-2xl"></div>
+                    <div className="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
                 </div>
 
                 <form className="space-y-4 mt-5">
@@ -76,15 +76,20 @@ export default function LoginPage() {
                     <div className=" flex justify-between gap-1">
                         <button
                             type="submit"
-                            className="w-full text-[#054BB4] border-2  border-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition"
+                            className="w-full text-[#054BB4] border-2  border-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
                         >
-                            Se Connecter
+                            <div className="w-5 ">
+                                <svg className="rotate-180 text-[#054BB4]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                                </svg>
+                            </div>
+                            Précédent
                         </button>
                         <button
                             type="submit"
                             className="w-full bg-[#0047BA] text-white py-2 rounded-md hover:bg-gray-300 transition"
                         >
-                            Se Connecter
+                            Suivant
                         </button>
                     </div>
 
