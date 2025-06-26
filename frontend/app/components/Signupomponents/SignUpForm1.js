@@ -26,7 +26,6 @@ const SignUpForm1 = () => {
 
             <div className=" flex justify-between gap-1">
                 <button
-                    type="submit"
                     className="w-full text-[#054BB4] border-2  border-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
                 >
                     <div className="w-6 px-1 rounded-full border-2 border-[#054BB4] flex items-center justify-center">
@@ -37,7 +36,6 @@ const SignUpForm1 = () => {
                     Précédent
                 </button>
                 <button
-                    type="submit"
                     className="w-full text-white bg-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
                 >
                     Suivant

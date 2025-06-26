@@ -4,6 +4,7 @@ import Link from "next/link";
 import Cercels from "../components/Signupomponents/cercels";
 import SignUpLeft from "../components/Signupomponents/SignUpLeft";
 import SignUpForm1 from "../components/Signupomponents/SignUpForm1";
+import SignUpForm2 from "../components/Signupomponents/SignUpForm2";
 
 export default function LoginPage() {
     return (
@@ -25,7 +26,7 @@ export default function LoginPage() {
 
                 <Cercels />
 
-                <SignUpForm1 />
+                <SignUpForm2 />
             </div>
         </div>
     );
