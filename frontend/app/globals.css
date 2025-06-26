@@ -4,6 +4,7 @@
 
 @import "tw-animate-css";
 @custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
 	--color-skblue: #054bb4;
 	--color-skblue-second: #054bb40f;
@@ -21,8 +22,10 @@
 	--color-philosophie: #006064;
 	--font-poppins: "Poppins", sans-serif;
 	--font-inter: "Inter", sans-serif;
-	--breakpoint-xxs: 23.5rem; /*(376px)*/
+	--breakpoint-xxs: 23.5rem;
+	/*(376px)*/
 }
+
 /*---break---*/
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);
@@ -61,6 +64,7 @@
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-ring: var(--sidebar-ring);
 }
+
 /*---break---*/
 :root {
 	--radius: 0.625rem;
@@ -96,6 +100,7 @@
 	--sidebar-border: oklch(0.922 0 0);
 	--sidebar-ring: oklch(0.708 0 0);
 }
+
 /*---break---*/
 .dark {
 	--background: oklch(0.145 0 0);
@@ -130,12 +135,32 @@
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(0.556 0 0);
 }
+
 /*---break---*/
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
 	}
+
 	body {
 		@apply bg-background text-foreground;
+	}
+}
+
+@layer utilities {
+
+	/* Chrome, Safari, and Opera */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* IE and Edge */
+	.no-scrollbar {
+		-ms-overflow-style: none;
+	}
+
+	/* Firefox */
+	.no-scrollbar {
+		scrollbar-width: none;
 	}
 }
