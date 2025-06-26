@@ -1,39 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import bgImage from "@/public/assets/signInImage2.png";
+
+import Cercels from "../components/Signupomponents/cercels";
+import SignUpLeft from "../components/Signupomponents/SignUpLeft";
+
 export default function LoginPage() {
     return (
         <div className="min-h-screen flex flex-col md:flex-row h-screen">
             {/* Login Form */}
-            <div className="md:w-1/2 h-64 md:h-auto bg-blue-800 flex flex-col justify-center relative text-2xl bg-center bg-cover "
-                style={{ backgroundImage: `url(${bgImage.src})` }}
-            >
-                {/* Bienvenue */}
-                <p
-                    className="text-white mt-10 md:mt-30 max-auto md:ml-[130px] text-2xl leading-[normal]
-        flex flex-col justify-between md:mb-30 font-min text-center md:text-left 
-          font-extralight"
-                >
-                    Bienvenue à
-                </p>
-
-                {/* SKOOLUTION */}
-                <div
-                    className="flex items-center font-bold text-[30px] sm:text-[40px] md:text-[50px] mx-auto md:ml-[130px]
-          md:w-auto mt-10 sm:mt-5 md:mt-20 text-center md:text-left ml-22  "
-                >
-                    <span className="bg-white text-blue-800 px-2">SK</span>
-                    <span className="text-white ml-0.5">OOLUTION</span>
-                </div>
-
-                {/* La plateforme d'éducation */}
-                <p
-                    className=" whitespace-nowrap text-xs text-white mb-17 w-1/5 
-         mr-53 sm:mt-4 md:mb-100 mx-auto md:ml-[130px] text-center md:text-left font-extralight"
-                >
-                    La plateforme d’éducation n°1 au Maroc.
-                </p>
-            </div>
+            <SignUpLeft />
             {/* Login Left */}
             <div className="w-full max-w-md mx-auto p-4 md:p-1 mt-30">
                 <h1
@@ -45,14 +20,9 @@ export default function LoginPage() {
                 <p className="text-sm text-center md:text-left  text-gray-500  ">
                     Veuillez entrer vos informations!
                 </p>
+                {/* progress cercels */}
 
-                <div class="flex items-center justify-between flex-wrap gap-4">
-                    <div className="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
-                    <div className="h-1 flex-1 max-w-20 bg-blue-500 rounded-2xl"></div>
-                    <div className="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
-                    <div className="h-1 flex-1 max-w-20 bg-blue-500 rounded-2xl"></div>
-                    <div className="rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-blue-900"></div>
-                </div>
+                <Cercels />
 
                 <form className="space-y-4 mt-5">
                     <div className=" relative">
