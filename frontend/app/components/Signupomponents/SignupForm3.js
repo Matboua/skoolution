@@ -3,7 +3,7 @@ import React from 'react'
 import Link from "next/link";
 import NavButtons from './NavButtons';
 
-const SignUpForm1 = () => {
+const SignUpForm3 = () => {
     return (
         <form className="space-y-4 mt-5">
             <div className=" relative">
@@ -63,4 +63,4 @@ const SignUpForm1 = () => {
     )
 }
 
-export default SignUpForm1
+export default SignUpForm3

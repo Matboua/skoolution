@@ -1,12 +1,23 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
 import Cercels from "../components/Signupomponents/cercels";
 import SignUpLeft from "../components/Signupomponents/SignUpLeft";
 import SignUpForm1 from "../components/Signupomponents/SignUpForm1";
 import SignUpForm2 from "../components/Signupomponents/SignUpForm2";
+import SignUpForm3 from "../components/Signupomponents/SignupForm3";
+import { useRef } from "react";
 
 export default function LoginPage() {
+    const containerRef = useRef(null);
+    const scrollToStep = (index) => {
+        if (containerRef.current) {
+            const scrollWidth = containerRef.current.clientWidth;
+            containerRef.current.scrollTo({
+                left: scrollWidth * index,
+                behavior: "smooth",
+            });
+        }
+    };
     return (
         <div className="min-h-screen flex flex-col md:flex-row h-screen">
             {/* Login Form */}
@@ -25,8 +36,17 @@ export default function LoginPage() {
                 {/* progress cercels */}
 
                 <Cercels />
-
-                <SignUpForm2 />
+                <div className="flex flex-nowrap w-full overflow-x-hidden no-scrollbar touch-none" >
+                    <div className="min-w-full">
+                        <SignUpForm1 />
+                    </div>
+                    <div className="min-w-full">
+                        <SignUpForm2 />
+                    </div>
+                    <div className="min-w-full">
+                        <SignUpForm3 />
+                    </div>
+                </div>
             </div>
         </div>
     );

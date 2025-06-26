@@ -5,7 +5,7 @@ import NavButtons from './NavButtons';
 
 const SignUpForm1 = () => {
     return (
-        <form className="space-y-4 mt-5">
+        <form className="space-y-4 mt-5 w-full">
             <div className=" relative">
                 <p className="ml-5 text-gray-500"> Nom complet</p>
                 <input

@@ -1,5 +1,5 @@
 "use client";
-import { getCircleStyle, getLineStyle } from "@/halpers/circleColers";
+import { getCircleStyle, getLineStyle } from "@/helpers/circleColers";
 import { Check } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
