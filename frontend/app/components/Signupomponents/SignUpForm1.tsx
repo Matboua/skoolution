@@ -2,8 +2,7 @@
 import React from 'react'
 import Link from "next/link";
 import NavButtons from './NavButtons';
-import { scrollLeft } from '@/helpers/scrole';
-import { scrollRight } from '@/helpers/scrole';
+import { scrollLeft , scrollRight } from '../../../helpers/scrole'; 
 
 const SignUpForm1 = () => {
     return (
