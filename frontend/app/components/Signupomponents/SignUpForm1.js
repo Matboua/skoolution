@@ -5,7 +5,7 @@ import NavButtons from './NavButtons';
 import { scrollLeft } from '@/helpers/scrole';
 import { scrollRight } from '@/helpers/scrole';
 
-const SignUpForm1 = ({ref}) => {
+const SignUpForm1 = () => {
     return (
         <div className="space-y-4 mt-5 w-full">
             <div className=" relative">

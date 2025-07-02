@@ -29,13 +29,13 @@ export default function LoginPage() {
                 <Cercels />
                 <div ref={containerRef} className="flex flex-nowrap w-full overflow-x-hidden no-scrollbar touch-none" >
                     <div className="min-w-full">
-                        <SignUpForm1 ref={containerRef} />
+                        <SignUpForm1 />
                     </div>
                     <div className="min-w-full">
-                        <SignUpForm2 ref={containerRef} />
+                        <SignUpForm2 />
                     </div>
                     <div className="min-w-full">
-                        <SignUpForm3 ref={containerRef} />
+                        <SignUpForm3 />
                     </div>
                 </div>
             </div>

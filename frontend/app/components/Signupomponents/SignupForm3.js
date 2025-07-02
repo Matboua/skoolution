@@ -3,7 +3,7 @@ import React from 'react'
 import Link from "next/link";
 import NavButtons from './NavButtons';
 
-const SignUpForm3 = ({ ref }) => {
+const SignUpForm3 = () => {
     return (
         <div className="space-y-4 mt-5">
             <div className=" relative">
