@@ -6,11 +6,11 @@ import SignUpLeft from "../components/Signupomponents/SignUpLeft";
 import SignUpForm1 from "../components/Signupomponents/SignUpForm1";
 import SignUpForm2 from "../components/Signupomponents/SignUpForm2";
 import SignUpForm3 from "../components/Signupomponents/SignupForm3";
-import { useStepStore } from "@/stateManagment/stepStor";
+import { useStepStore,StepStore } from "../../stateManagment/stepStor";
 
 export default function LoginPage() {
     const containerRef = useRef(null);
-    const { counter, increment, decrement } = useStepStore()
+    const { counter, increment, decrement }:StepStore = useStepStore()
 
 
     const scrollToStep = (index) => {
@@ -58,8 +58,8 @@ export default function LoginPage() {
                 <div className="flex justify-between gap-2 mt-6">
                     <button
                         className="w-full text-[#054BB4] border-2 border-[#054BB4] py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
-                        onClick={() => { decrement(); scrollToStep(counter++) }}
-                        {...counter === 0 ? "disabled" : ""}
+                        onClick={() => { decrement(); scrollToStep(counter - 1); }}
+                        disabled={counter === 0}
                     >
                         <div className="w-6 px-1 rounded-full border-2 border-[#054BB4] flex items-center justify-center">
                             <svg
@@ -78,7 +78,7 @@ export default function LoginPage() {
 
                     <button
                         className="w-full text-white bg-[#054BB4] py-2 rounded-md hover:bg-blue-600 transition flex gap-2 justify-center"
-                        onClick={() => { increment(); scrollToStep(counter--) }}
+                        onClick={() => { increment(); scrollToStep(counter + 1); }}
                     >
                         Suivant
                         <div className="w-6 px-1 rounded-full border-2 border-white flex items-center justify-center">

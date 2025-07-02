@@ -1,6 +1,6 @@
-import Header from "@/app/components/client/Header";
-import Sidebar from "@/app/components/client/Sidebar";
-import Competences from "@/app/components/client/Competences";
+import Header from "../../../components/guest/Header"
+import Sidebar from "../../../components/client/Sidebar";
+import Competences from "../../../components/client/Competences";
 
 export default function page() {
 	return (
