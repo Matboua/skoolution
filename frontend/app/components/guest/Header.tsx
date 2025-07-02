@@ -4,7 +4,12 @@ import ChooseLanguage from "../ui/ChooseLanguage";
 import Mode from "../ui/Mode";
 import Link from "next/link";
 
-export default function Header({ isOpenMenu, setIsOpenMenu }) {
+type HeaderProps = {
+	isOpenMenu?: boolean;
+	setIsOpenMenu?: (isOpen: boolean) => void;
+};
+
+export default function Header({ isOpenMenu, setIsOpenMenu }: HeaderProps) {
 	return (
 		<section
 			className="
@@ -46,6 +51,7 @@ export default function Header({ isOpenMenu, setIsOpenMenu }) {
 							color="text-white"
 							bg="bg-skblue"
 							text="Commencer"
+							addStyle=""
 						/>
 					</div>
 					<Link
@@ -58,18 +64,16 @@ export default function Header({ isOpenMenu, setIsOpenMenu }) {
 				{/* Humberger Menu */}
 				<div className="lg:hidden relative w-[41px]">
 					<AlignJustify
-						className={`cursor-pointer transition-all duration-300 absolute right-0 -translate-y-1/2 ${
-							!isOpenMenu ? "scale-100 rotate-0" : "scale-0 rotate-180"
-						}`}
+						className={`cursor-pointer transition-all duration-300 absolute right-0 -translate-y-1/2 ${!isOpenMenu ? "scale-100 rotate-0" : "scale-0 rotate-180"
+							}`}
 						size={28}
 						onClick={() => {
 							setIsOpenMenu(!isOpenMenu);
 						}}
 					/>
 					<X
-						className={`cursor-pointer transition-all duration-300 absolute right-0 -translate-y-1/2 ${
-							!isOpenMenu ? "scale-0 rotate-180" : "scale-100 rotate-0"
-						}`}
+						className={`cursor-pointer transition-all duration-300 absolute right-0 -translate-y-1/2 ${!isOpenMenu ? "scale-0 rotate-180" : "scale-100 rotate-0"
+							}`}
 						size={28}
 						onClick={() => {
 							setIsOpenMenu(!isOpenMenu);
@@ -77,11 +81,10 @@ export default function Header({ isOpenMenu, setIsOpenMenu }) {
 					/>
 					{/* List Menu */}
 					<div
-						className={`w-screen bg-white dark:bg-skblack py-8 flex flex-col items-center absolute -right-5 top-8 gap-9 transition-all duration-500 ${
-							isOpenMenu
+						className={`w-screen bg-white dark:bg-skblack py-8 flex flex-col items-center absolute -right-5 top-8 gap-9 transition-all duration-500 ${isOpenMenu
 								? "translate-x-0 opacity-100"
 								: "translate-x-[100%] opacity-100"
-						} h-[calc(100vh-66px)] `}
+							} h-[calc(100vh-66px)] `}
 					>
 						<a
 							href="#accueil"
