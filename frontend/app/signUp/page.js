@@ -9,15 +9,6 @@ import { useRef } from "react";
 
 export default function LoginPage() {
     const containerRef = useRef(null);
-    const scrollToStep = (index) => {
-        if (containerRef.current) {
-            const scrollWidth = containerRef.current.clientWidth;
-            containerRef.current.scrollTo({
-                left: scrollWidth * index,
-                behavior: "smooth",
-            });
-        }
-    };
     return (
         <div className="min-h-screen flex flex-col md:flex-row h-screen">
             {/* Login Form */}
@@ -36,15 +27,15 @@ export default function LoginPage() {
                 {/* progress cercels */}
 
                 <Cercels />
-                <div className="flex flex-nowrap w-full overflow-x-hidden no-scrollbar touch-none" >
+                <div ref={containerRef} className="flex flex-nowrap w-full overflow-x-hidden no-scrollbar touch-none" >
                     <div className="min-w-full">
-                        <SignUpForm1 />
+                        <SignUpForm1 ref={containerRef} />
                     </div>
                     <div className="min-w-full">
-                        <SignUpForm2 />
+                        <SignUpForm2 ref={containerRef} />
                     </div>
                     <div className="min-w-full">
-                        <SignUpForm3 />
+                        <SignUpForm3 ref={containerRef} />
                     </div>
                 </div>
             </div>

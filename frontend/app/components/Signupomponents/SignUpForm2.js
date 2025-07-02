@@ -3,9 +3,9 @@ import React from 'react'
 import Link from "next/link";
 import NavButtons from './NavButtons';
 
-const SignUpForm2 = () => {
+const SignUpForm2 = ({ ref }) => {
     return (
-        <form className="space-y-4 mt-5">
+        <div className="space-y-4 mt-5">
             <div className=" relative">
                 <p className="ml-5 text-gray-500"> Lycée</p>
                 <select
@@ -21,7 +21,7 @@ const SignUpForm2 = () => {
                 </select>
                 <div className='absolute right-4 top-[60%]'>
                     <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                        <path d="M12.7369 1H2.26307C1.73438 1 1.42685 1.59759 1.73415 2.02781L6.97107 9.3595C7.23031 9.72243 7.76969 9.72243 8.02893 9.3595L13.2659 2.0278C13.5731 1.59759 13.2656 1 12.7369 1Z" fill="#878787" stroke="#878787" stroke-width="1.3" />
+                        <path d="M12.7369 1H2.26307C1.73438 1 1.42685 1.59759 1.73415 2.02781L6.97107 9.3595C7.23031 9.72243 7.76969 9.72243 8.02893 9.3595L13.2659 2.0278C13.5731 1.59759 13.2656 1 12.7369 1Z" fill="#878787" stroke="#878787" strokeWidth="1.3" />
                     </svg>
                 </div>
 
@@ -51,6 +51,7 @@ const SignUpForm2 = () => {
             <div className=" flex justify-between gap-1">
                 <button
                     className="w-full text-[#054BB4] border-2  border-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
+                    onClick={() => { scrollLeft(ref, 0) }}
                 >
                     <div className="w-6 px-1 rounded-full border-2 border-[#054BB4] flex items-center justify-center">
                         <svg className="rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -61,6 +62,7 @@ const SignUpForm2 = () => {
                 </button>
                 <button
                     className="w-full text-white bg-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
+                    onClick={() => { scrollRight(ref, 0) }}
                 >
                     Suivant
                     <div className="w-6 px-1 rounded-full border-2 border-[#ffffff] flex items-center justify-center">
@@ -83,7 +85,7 @@ const SignUpForm2 = () => {
                     Cliquez ici!
                 </Link>
             </p>
-        </form>
+        </div>
     )
 }
 

@@ -2,10 +2,12 @@
 import React from 'react'
 import Link from "next/link";
 import NavButtons from './NavButtons';
+import { scrollLeft } from '@/helpers/scrole';
+import { scrollRight } from '@/helpers/scrole';
 
-const SignUpForm1 = () => {
+const SignUpForm1 = ({ref}) => {
     return (
-        <form className="space-y-4 mt-5 w-full">
+        <div className="space-y-4 mt-5 w-full">
             <div className=" relative">
                 <p className="ml-5 text-gray-500"> Nom complet</p>
                 <input
@@ -27,6 +29,7 @@ const SignUpForm1 = () => {
             <div className=" flex justify-between gap-1">
                 <button
                     className="w-full text-[#054BB4] border-2  border-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
+                    onClick={()=>{scrollLeft(ref,0)}}
                 >
                     <div className="w-6 px-1 rounded-full border-2 border-[#054BB4] flex items-center justify-center">
                         <svg className="rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -37,6 +40,7 @@ const SignUpForm1 = () => {
                 </button>
                 <button
                     className="w-full text-white bg-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
+                    onClick={()=>{scrollRight(ref,0)}}
                 >
                     Suivant
                     <div className="w-6 px-1 rounded-full border-2 border-[#ffffff] flex items-center justify-center">
@@ -59,7 +63,7 @@ const SignUpForm1 = () => {
                     Cliquez ici!
                 </Link>
             </p>
-        </form>
+        </div>
     )
 }
 
