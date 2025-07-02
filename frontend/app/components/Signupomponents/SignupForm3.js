@@ -24,30 +24,7 @@ const SignUpForm3 = () => {
                 />
             </div>
 
-            <div className=" flex justify-between gap-1">
-                <button
-                    className="w-full text-[#054BB4] border-2  border-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
-                    onClick={() => { scrollLeft(ref, 0) }}
-                >
-                    <div className="w-6 px-1 rounded-full border-2 border-[#054BB4] flex items-center justify-center">
-                        <svg className="rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path fill="#054BB4" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-                        </svg>
-                    </div>
-                    Précédent
-                </button>
-                <button
-                    className="w-full text-white bg-[#054BB4] border-[#054BB4 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
-                    onClick={() => { scrollRight(ref, 0) }}
-                >
-                    Suivant
-                    <div className="w-6 px-1 rounded-full border-2 border-[#ffffff] flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path fill="#ffffff" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-                        </svg>
-                    </div>
-                </button>
-            </div>
+            
 
             <div className="flex items-center my-4">
                 <hr className="flex-grow border-gray-300" />
