@@ -11,7 +11,6 @@ const SignUpForm2 = () => {
                 <select
                     className='w-full border  py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-12 appearance-none'
                 >
-                    <option value="" disabled selected>Sélectionnez votre lycée</option>
                     <option value="lycee1">Lycée 1</option>
                     <option value="lycee2">Lycée 2</option>
                     <option value="lycee3">Lycée 3</option>
