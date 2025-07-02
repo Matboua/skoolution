@@ -1,13 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import bgImage from "@/public/assets/signInImage1.png";
 export default function LoginPage() {
 	return (
 		<div className="min-h-screen flex flex-col md:flex-row h-screen">
 			{/* Login Form */}
-			<div className="md:w-1/2 h-64 md:h-auto bg-blue-800 flex flex-col justify-center relative text-2xl">
+			<div className="md:w-1/2 h-64 md:h-auto bg-blue-800 flex flex-col justify-center relative text-2xl bg-center bg-cover "
+				style={{ backgroundImage: `url(${bgImage.src})` }}
+			>
 				{/* Bienvenue */}
 				<p
-					className="text-white mt-10 md:mt-30 max-auto md:ml-[130px] text-2xl leading-[normal]
+					className="text-white mt-10 md:mt-30  max-auto md:ml-[130px] text-2xl leading-[normal]
         flex flex-col justify-between md:mb-30 font-min text-center md:text-left 
           font-extralight"
 				>
@@ -17,7 +20,7 @@ export default function LoginPage() {
 				{/* SKOOLUTION */}
 				<div
 					className="flex items-center font-bold text-[30px] sm:text-[40px] md:text-[50px] mx-auto md:ml-[130px]
-         w-full md:w-auto mt-10 sm:mt-5 md:mt-20 text-center md:text-left ml-22  "
+          md:w-auto mt-10 sm:mt-5 md:mt-20 text-center md:text-left ml-22  "
 				>
 					<span className="bg-white text-blue-800 px-2">SK</span>
 					<span className="text-white ml-0.5">OOLUTION</span>
