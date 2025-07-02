@@ -54,7 +54,7 @@ export default function RadarChart() {
 					color: "#333", // هنا تغيّر اللون
 					font: {
 						size: 12, // حجم الخط
-						weight: "600", // سمك الخط
+						weight: 600, // سمك الخط
 					},
 				},
 				ticks: {

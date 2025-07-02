@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
 	// Close and Open The Sidebar On Focus Change
-	const [opensidebar, setOpensidebar] = useState();
+	const [opensidebar, setOpensidebar] = useState(false);
 	const sidebarRef = useRef(null);
 	useClickOutside(sidebarRef, () => setOpensidebar(false));
 	useEffect(() => {
