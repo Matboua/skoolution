@@ -1,6 +1,6 @@
-import Header from "@/app/components/client/Header";
-import Sidebar from "@/app/components/client/Sidebar";
-import Lessons from "@/app/components/client/Lessons";
+import Lessons from "../../../components/client/Lessons";
+import Sidebar from "../../../components/client/Sidebar";
+import Header from "../../../components/guest/Header";
 
 export default function page() {
 	return (
