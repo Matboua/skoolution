@@ -15,7 +15,6 @@ export default function LoginPage() {
     const { Errors } = useSignUpStore();
 
     const scrollToStep = (index: number) => {
-        console.log(index);
         if (containerRef.current) {
             const scrollWidth = containerRef.current.clientWidth;
             containerRef.current.scrollTo({
