@@ -6,7 +6,7 @@ import { useSignUpStore } from "../../../stateManagment/signupStor"
 
 const SignUpForm1 = () => {
     const { counter } = useStepStore();
-    const { clearError, Errors, setError } = useSignUpStore()
+    const { clearError, setError } = useSignUpStore()
 
     const {
         register,
