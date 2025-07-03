@@ -81,7 +81,7 @@ export default function LoginPage() {
                     <button
                         className="w-full text-white bg-[#054BB4] py-2 rounded-md hover:bg-blue-600 transition flex gap-2 justify-center"
                         onClick={() => { increment(); scrollToStep(counter + 1); }}
-                        disabled={Errors as any}
+                        disabled={Object.keys(Errors).length > 0}
                     >
                         Suivant
                         <div className="w-6 px-1 rounded-full border-2 border-white flex items-center justify-center">

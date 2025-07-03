@@ -2,11 +2,11 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { useStepStore } from '../../../stateManagment/stepStor';
-import { useSignUpStore} from "../../../stateManagment/signupStor"
+import { useSignUpStore } from "../../../stateManagment/signupStor"
 
 const SignUpForm1 = () => {
     const { counter } = useStepStore();
-    const {clearError,Errors,setError }= useSignUpStore()
+    const { clearError, Errors, setError } = useSignUpStore()
 
     const {
         register,
@@ -22,6 +22,51 @@ const SignUpForm1 = () => {
             setError("telephone", fieldState.error.message);
         } else {
             clearError("telephone");
+        }
+    };
+    const handelNamdeBlure = async () => {
+        const isValid = await trigger("nom");
+        const fieldState = getFieldState("nom");
+        if (!isValid && fieldState.error?.message) {
+            setError("nom", fieldState.error.message);
+        } else {
+            clearError("nom");
+        }
+    }
+    const handelEmailBlure = async () => {
+        const isValid = await trigger("email");
+        const fieldState = getFieldState("email");
+        if (!isValid && fieldState.error?.message) {
+            setError("email", fieldState.error.message);
+        } else {
+            clearError("email");
+        }
+    }
+    const handelPasswordBlure = async () => {
+        const isValid = await trigger("password");
+        const fieldState = getFieldState("password");
+        if (!isValid && fieldState.error?.message) {
+            setError("password", fieldState.error.message);
+        } else {
+            clearError("password");
+        }
+    }
+    const handleLyceeBlur = async () => {
+        const isValid = await trigger("lycee");
+        const fieldState = getFieldState("lycee");
+        if (!isValid && fieldState.error?.message) {
+            setError("lycee", fieldState.error.message);
+        } else {
+            clearError("lycee");
+        }
+    }
+    const handleNiveauBlur = async () => {
+        const isValid = await trigger("niveau");
+        const fieldState = getFieldState("niveau");
+        if (!isValid && fieldState.error?.message) {
+            setError("niveau", fieldState.error.message);
+        } else {
+            clearError("niveau");
         }
     };
 
