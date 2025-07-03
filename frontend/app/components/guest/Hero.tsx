@@ -40,12 +40,14 @@ export default function Hero() {
 						color="text-white"
 						bg="bg-skblue"
 						text="Commencer"
+						addStyle=""
 					/>
 					<Button
 						href="/login"
 						color="text-skblue"
 						bg="bg-white"
 						text="Testez gratuitement"
+						addStyle=""
 					/>
 				</div>
 			</div>

@@ -1,3 +1,5 @@
+import { Award, Check, GraduationCap, Send } from "lucide-react";
+
 export default function Student() {
 	return (
 		<div className="z-0 relative flex justify-center items-center ml-0 sm:-ml-10 md:ml-0 w-1/2 mt-0 sm:-mt-10 md:mt-0 sm:w-auto sm:h-auto">

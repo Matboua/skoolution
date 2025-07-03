@@ -83,7 +83,7 @@ export default function Progression() {
 							className={`relative rounded-full w-1/2 aspect-square bg-conic from-skblue from-${general.degree}% to-neutral-200 to-0% transition-all duration-300`}
 							style={{
 								background: `conic-gradient(var(--color-skblue) ${
-									general.degree * 18
+									Number(general.degree) * 18
 								}deg, #e5e5e5 0deg)`,
 							}}
 						>
