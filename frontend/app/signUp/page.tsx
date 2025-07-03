@@ -4,16 +4,16 @@ import { useRef } from "react";
 import Cercels from "../components/Signupomponents/cercels";
 import SignUpLeft from "../components/Signupomponents/SignUpLeft";
 import SignUpForm1 from "../components/Signupomponents/SignUpForm1";
-import SignUpForm2 from "../components/Signupomponents/SignUpForm2";
-import SignUpForm3 from "../components/Signupomponents/SignupForm3";
-import { useStepStore,StepStore } from "../../stateManagment/stepStor";
+import Link from "next/link";
+import NavButtons from '../components/Signupomponents/NavButtons';
+import { useStepStore, StepStore } from "../../stateManagment/stepStor";
 
 export default function LoginPage() {
     const containerRef = useRef(null);
-    const { counter, increment, decrement }:StepStore = useStepStore()
+    const { counter, increment, decrement }: StepStore = useStepStore()
 
 
-    const scrollToStep = (index:number) => {
+    const scrollToStep = (index: number) => {
         console.log(index);
         if (containerRef.current) {
             const scrollWidth = containerRef.current.clientWidth;
@@ -46,18 +46,20 @@ export default function LoginPage() {
                     <div className="min-w-full">
                         <SignUpForm1 />
                     </div>
-                    <div className="min-w-full">
-                        <SignUpForm2 />
-                    </div>
-                    <div className="min-w-full">
-                        <SignUpForm3 />
-                    </div>
+                    
                 </div>
+                    <NavButtons />
+                    <p className="text-center text-sm mt-6 text-gray-500">
+                        Avez-vous déjà un compte ?{" "}
+                        <Link href="register" className="text-blue-600 hover:underline">
+                            Cliquez ici!
+                        </Link>
+                    </p>
 
                 {/* Navigation Buttons */}
                 <div className="flex justify-between gap-2 mt-6">
                     <button
-                        className={ counter!==0 ? `w-full text-gray-300 border-2 border-gray-300 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center`:`w-full text-gray-300 border-2 border-gray-300 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center`}
+                        className={counter !== 0 ? `w-full text-gray-300 border-2 border-gray-300 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center` : `w-full text-gray-300 border-2 border-gray-300 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center`}
                         onClick={() => { decrement(); scrollToStep(counter - 1); }}
                         disabled={counter === 0}
                     >
