@@ -15,58 +15,13 @@ const SignUpForm1 = () => {
         getFieldState
     } = useForm();
 
-    const handleTelephoneBlur = async () => {
-        const isValid = await trigger("telephone");
-        const fieldState = getFieldState("telephone");
+    const handleBlur = async (propName: string) => {
+        const isValid = await trigger(propName);
+        const fieldState = getFieldState(propName);
         if (!isValid && fieldState.error?.message) {
-            setError("telephone", fieldState.error.message);
+            setError(propName, fieldState.error.message);
         } else {
-            clearError("telephone");
-        }
-    };
-    const handelNamdeBlure = async () => {
-        const isValid = await trigger("nom");
-        const fieldState = getFieldState("nom");
-        if (!isValid && fieldState.error?.message) {
-            setError("nom", fieldState.error.message);
-        } else {
-            clearError("nom");
-        }
-    }
-    const handelEmailBlure = async () => {
-        const isValid = await trigger("email");
-        const fieldState = getFieldState("email");
-        if (!isValid && fieldState.error?.message) {
-            setError("email", fieldState.error.message);
-        } else {
-            clearError("email");
-        }
-    }
-    const handelPasswordBlure = async () => {
-        const isValid = await trigger("password");
-        const fieldState = getFieldState("password");
-        if (!isValid && fieldState.error?.message) {
-            setError("password", fieldState.error.message);
-        } else {
-            clearError("password");
-        }
-    }
-    const handleLyceeBlur = async () => {
-        const isValid = await trigger("lycee");
-        const fieldState = getFieldState("lycee");
-        if (!isValid && fieldState.error?.message) {
-            setError("lycee", fieldState.error.message);
-        } else {
-            clearError("lycee");
-        }
-    }
-    const handleNiveauBlur = async () => {
-        const isValid = await trigger("niveau");
-        const fieldState = getFieldState("niveau");
-        if (!isValid && fieldState.error?.message) {
-            setError("niveau", fieldState.error.message);
-        } else {
-            clearError("niveau");
+            clearError(propName);
         }
     };
 
@@ -83,7 +38,7 @@ const SignUpForm1 = () => {
                             <p className="ml-5 text-gray-500">Nom complet</p>
                             <input
                                 {...register("nom", { required: "Nom complet est requis" })}
-                                onBlur={() => trigger("nom")}
+                                onBlur={() => handleBlur("nom")}
                                 placeholder="Ecrivez votre Nom..."
                                 className={`w-full border py-2 px-3 focus:outline-none focus:ring-2 ${errors.nom ? "ring-red-500" : "ring-blue-500"
                                     } pl-12`}
@@ -101,7 +56,7 @@ const SignUpForm1 = () => {
                                         message: "Numéro invalide",
                                     },
                                 })}
-                                onBlur={() => handleTelephoneBlur()}
+                                onBlur={() => handleBlur("telephone")}
                                 placeholder="Ecrivez votre numéro..."
                                 className={`w-full border py-2 px-3 focus:outline-none focus:ring-2 ${errors.telephone ? "ring-red-500" : "ring-blue-500"
                                     } pl-12`}
@@ -118,7 +73,7 @@ const SignUpForm1 = () => {
                             <p className="ml-5 text-gray-500">Lycée</p>
                             <select
                                 {...register("lycee", { required: "Lycée est requis" })}
-                                onBlur={() => trigger("lycee")}
+                                onBlur={() => handleBlur("telephone")}
                                 className={`w-full border py-2 px-3 focus:outline-none focus:ring-2 ${errors.lycee ? "ring-red-500" : "ring-blue-500"
                                     } pl-12 appearance-none`}
                             >
@@ -133,7 +88,7 @@ const SignUpForm1 = () => {
                             <p className="ml-5 text-gray-500">Niveau</p>
                             <select
                                 {...register("niveau", { required: "Niveau est requis" })}
-                                onBlur={() => trigger("niveau")}
+                                onBlur={() => handleBlur("niveau")}
                                 className={`w-full border py-2 px-3 focus:outline-none focus:ring-2 ${errors.niveau ? "ring-red-500" : "ring-blue-500"
                                     } pl-12 appearance-none`}
                             >
@@ -159,7 +114,7 @@ const SignUpForm1 = () => {
                                         message: "Email invalide",
                                     },
                                 })}
-                                onBlur={() => trigger("email")}
+                                onBlur={() => handleBlur("email")}
                                 placeholder="Ecrivez votre adresse email..."
                                 className={`w-full border py-2 px-3 focus:outline-none focus:ring-2 ${errors.email ? "ring-red-500" : "ring-blue-500"
                                     } pl-12`}
@@ -175,7 +130,7 @@ const SignUpForm1 = () => {
                                     required: "Mot de passe requis",
                                     minLength: { value: 6, message: "Au moins 6 caractères" },
                                 })}
-                                onBlur={() => trigger("password")}
+                                onBlur={() => handleBlur("password")}
                                 placeholder="Ecrivez votre mot de passe"
                                 className={`w-full border py-2 px-3 focus:outline-none focus:ring-2 ${errors.password ? "ring-red-500" : "ring-blue-500"
                                     } pl-12`}
