@@ -1,10 +1,11 @@
 "use client";
 import { getCircleStyle, getLineStyle } from "../../../helpers/circleColers";
 import { Check } from "lucide-react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useStepStore } from "../../../stateManagment/stepStor";
 
-const Cercels = () => {
-    const [step, setStep] = useState(2);
+const Cercels: React.FC = () => {
+    const { counter } = useStepStore();
 
 
     return (
@@ -14,10 +15,10 @@ const Cercels = () => {
                     <div className="flex flex-col items-center">
                         <div
                             className={`rounded-full w-8 h-8 sm:w-12 sm:h-12 flex justify-center items-center ${getCircleStyle(
-                                step, s
+                                counter, s
                             )}`}
                         >
-                            {step >= s ? (
+                            {counter >= s ? (
                                 <Check className="text-white" />
                             ) : (
                                 <></>
@@ -28,7 +29,7 @@ const Cercels = () => {
                     {index < 2 && (
                         <div
                             className={`h-1 -mt-4 flex-1 max-w-20 rounded-2xl ${getLineStyle(
-                                step, s
+                                counter, s
                             )}`}
                         ></div>
                     )}

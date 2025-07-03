@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import bgImage from "@/public/assets/signInImage2.png";
+import bgImage from "../../../public/assets/signInImage2.png"
 
 
 const SignUpLeft = () => {

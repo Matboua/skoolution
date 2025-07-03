@@ -30,9 +30,8 @@ const SignUpForm2 = () => {
                 <p className="ml-5 text-gray-500">Niveau</p>
                 <select
                     className='w-full border  py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-12 appearance-none'
-                    placeholder="Sélectionnez votre lycée"
                 >
-                    <option value="" disabled selected> Sélectionnez votre Niveau </option>
+                    {/* <option value="" disabled selected> Sélectionnez votre Niveau </option> */}
                     <option value="lycee1">Niveau 1</option>
                     <option value="lycee2">Niveau 2</option>
                     <option value="lycee3">Niveau 3</option>
