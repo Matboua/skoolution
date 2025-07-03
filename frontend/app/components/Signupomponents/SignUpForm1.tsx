@@ -2,15 +2,27 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { useStepStore } from '../../../stateManagment/stepStor';
+import { useSignUpStore} from "../../../stateManagment/signupStor"
 
 const SignUpForm1 = () => {
     const { counter } = useStepStore();
+    const {clearError,Errors,setError }= useSignUpStore()
 
     const {
         register,
         formState: { errors },
         trigger,
     } = useForm();
+
+    // const handleTelephoneBlur = async () => {
+    //     const isValid = await trigger("telephone");
+    //     const fieldState = getFieldState("telephone");
+    //     if (!isValid && fieldState.error?.message) {
+    //         setStepError("telephone", fieldState.error.message);
+    //     } else {
+    //         clearStepError("telephone");
+    //     }
+    // };
 
     return (
         <form className="relative w-full h-fit overflow-hidden">
