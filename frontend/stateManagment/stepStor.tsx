@@ -7,7 +7,13 @@ export interface StepStore {
     decrement: () => void;
 }
 export const useStepStore = create<StepStore>((set) => ({
-    counter:1,
-    increment: () => set((state) => ({ counter: state.counter + 1 })),
-    decrement: () => set((state) => ({ counter: state.counter - 1 })),
+    counter: 1,
+    increment: () =>
+        set((state) => ({
+            counter: state.counter < 3 ? state.counter + 1 : state.counter,
+        })),
+    decrement: () =>
+        set((state) => ({
+            counter: state.counter > 1 ? state.counter - 1 : state.counter,
+        })),
 }))
