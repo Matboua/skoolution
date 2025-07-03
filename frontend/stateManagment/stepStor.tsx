@@ -10,11 +10,11 @@ export const useStepStore = create<StepStore>((set) => ({
     counter: 0,
     increment: () => {
         set((state) => ({
-            counter: state.counter < 3 ? state.counter + 1 : state.counter,
+            counter: state.counter < 2 ? state.counter + 1 : state.counter,
         }))
     },
     decrement: () =>
         set((state) => ({
-            counter: state.counter > 1 ? state.counter - 1 : state.counter,
+            counter: state.counter > 0 ? state.counter - 1 : state.counter,
         })),
 }))

@@ -57,7 +57,7 @@ export default function LoginPage() {
                 {/* Navigation Buttons */}
                 <div className="flex justify-between gap-2 mt-6">
                     <button
-                        className="w-full text-[#054BB4] border-2 border-[#054BB4] py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center"
+                        className={ counter!==0 ? `w-full text-gray-300 border-2 border-gray-300 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center`:`w-full text-gray-300 border-2 border-gray-300 py-2 rounded-md hover:bg-gray-300 transition flex gap-2 justify-center`}
                         onClick={() => { decrement(); scrollToStep(counter - 1); }}
                         disabled={counter === 0}
                     >
