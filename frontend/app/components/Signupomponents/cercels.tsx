@@ -10,7 +10,7 @@ const Cercels: React.FC = () => {
 
     return (
         <div className="flex items-center justify-between flex-wrap gap-4">
-            {[1, 2, 3].map((s, index) => (
+            {[0,1,2].map((s, index) => (
                 <React.Fragment key={s}>
                     <div className="flex flex-col items-center">
                         <div
@@ -24,7 +24,7 @@ const Cercels: React.FC = () => {
                                 <></>
                             )}
                         </div>
-                        <p className="text-sm mt-1 text-center">{`étape ${s}`}</p>
+                        <p className="text-sm mt-1 text-center">{`étape ${++s}`}</p>
                     </div>
                     {index < 2 && (
                         <div
