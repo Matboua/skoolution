@@ -7,11 +7,12 @@ import SignUpForm1 from "../components/Signupomponents/SignUpForm1";
 import Link from "next/link";
 import NavButtons from '../components/Signupomponents/NavButtons';
 import { useStepStore, StepStore } from "../../stateManagment/stepStor";
+import { useSignUpStore } from "../../stateManagment/signupStor";
 
 export default function LoginPage() {
     const containerRef = useRef(null);
     const { counter, increment, decrement }: StepStore = useStepStore()
-
+    const { Errors } = useSignUpStore();
 
     const scrollToStep = (index: number) => {
         console.log(index);
@@ -46,15 +47,15 @@ export default function LoginPage() {
                     <div className="min-w-full">
                         <SignUpForm1 />
                     </div>
-                    
+
                 </div>
-                    <NavButtons />
-                    <p className="text-center text-sm mt-6 text-gray-500">
-                        Avez-vous déjà un compte ?{" "}
-                        <Link href="register" className="text-blue-600 hover:underline">
-                            Cliquez ici!
-                        </Link>
-                    </p>
+                <NavButtons />
+                <p className="text-center text-sm mt-6 text-gray-500">
+                    Avez-vous déjà un compte ?{" "}
+                    <Link href="register" className="text-blue-600 hover:underline">
+                        Cliquez ici!
+                    </Link>
+                </p>
 
                 {/* Navigation Buttons */}
                 <div className="flex justify-between gap-2 mt-6">
@@ -81,6 +82,7 @@ export default function LoginPage() {
                     <button
                         className="w-full text-white bg-[#054BB4] py-2 rounded-md hover:bg-blue-600 transition flex gap-2 justify-center"
                         onClick={() => { increment(); scrollToStep(counter + 1); }}
+                        disabled={Errors as any}
                     >
                         Suivant
                         <div className="w-6 px-1 rounded-full border-2 border-white flex items-center justify-center">

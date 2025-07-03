@@ -12,17 +12,18 @@ const SignUpForm1 = () => {
         register,
         formState: { errors },
         trigger,
+        getFieldState
     } = useForm();
 
-    // const handleTelephoneBlur = async () => {
-    //     const isValid = await trigger("telephone");
-    //     const fieldState = getFieldState("telephone");
-    //     if (!isValid && fieldState.error?.message) {
-    //         setStepError("telephone", fieldState.error.message);
-    //     } else {
-    //         clearStepError("telephone");
-    //     }
-    // };
+    const handleTelephoneBlur = async () => {
+        const isValid = await trigger("telephone");
+        const fieldState = getFieldState("telephone");
+        if (!isValid && fieldState.error?.message) {
+            setError("telephone", fieldState.error.message);
+        } else {
+            clearError("telephone");
+        }
+    };
 
     return (
         <form className="relative w-full h-fit overflow-hidden">
@@ -55,7 +56,7 @@ const SignUpForm1 = () => {
                                         message: "Numéro invalide",
                                     },
                                 })}
-                                onBlur={() => trigger("telephone")}
+                                onBlur={() => handleTelephoneBlur()}
                                 placeholder="Ecrivez votre numéro..."
                                 className={`w-full border py-2 px-3 focus:outline-none focus:ring-2 ${errors.telephone ? "ring-red-500" : "ring-blue-500"
                                     } pl-12`}
