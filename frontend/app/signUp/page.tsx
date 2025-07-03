@@ -13,8 +13,8 @@ export default function LoginPage() {
     const { counter, increment, decrement }:StepStore = useStepStore()
 
 
-    const scrollToStep = (index) => {
-        console.log(counter);
+    const scrollToStep = (index:number) => {
+        console.log(index);
         if (containerRef.current) {
             const scrollWidth = containerRef.current.clientWidth;
             containerRef.current.scrollTo({

@@ -8,10 +8,11 @@ export interface StepStore {
 }
 export const useStepStore = create<StepStore>((set) => ({
     counter: 1,
-    increment: () =>
+    increment: () => {
         set((state) => ({
             counter: state.counter < 3 ? state.counter + 1 : state.counter,
-        })),
+        }))
+    },
     decrement: () =>
         set((state) => ({
             counter: state.counter > 1 ? state.counter - 1 : state.counter,
