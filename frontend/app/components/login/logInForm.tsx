@@ -1,18 +1,24 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useForm } from "react-hook-form";
-import { useState } from 'react';
+import * as ReactHookForm from 'react-hook-form';
 
+const { useForm } = ReactHookForm;
+
+type FormData = {
+    email: string;
+    password: string;
+};
 
 const LogInForm: React.FC = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
     const submith = async () => {
 
     }
     return (
         <>
-            <form className="space-y-4 mt-5" onSubmit={handleSubmit(submith )} >
+            <form className="space-y-4 mt-5" onSubmit={handleSubmit(submith)} >
                 <div className=" relative">
                     <p className="ml-5 text-gray-500"> adresse email</p>
                     <Image
@@ -23,17 +29,19 @@ const LogInForm: React.FC = () => {
                         className="absolute ml-5 mt-3 "
                     />
                     <input
-                    {...register("email",{
-                        required: "L'email est requis",
-                        pattern: {
-                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                            message: "Format d'email invalide"
-                        }
-                    })}
+                        {...register("email", {
+                            required: "L'email est requis",
+                            pattern: {
+                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                message: "Format d'email invalide"
+                            }
+                        })}
                         type="email"
                         placeholder=" | Ecrivez votre email ici..."
                         className="w-full border  py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-12"
                     />
+                    <p  className='text-red-500 text-xl text-center'>{ errors.email?.message }</p>
+                    
                 </div>
 
                 <div className="relative">
@@ -47,13 +55,13 @@ const LogInForm: React.FC = () => {
                     />
                     <input
                         type="password"
-                        {...register("passwored",{
-                            required:"Le mot de passe est requis",
+                        {...register("password", {
+                            required: "Le mot de passe est requis",
                             minLength: {
                                 value: 6,
                                 message: "Le mot de passe doit comporter au moins 6 caractères"
                             },
-                            maxLength:{
+                            maxLength: {
                                 value: 20,
                                 message: "Le mot de passe ne doit pas dépasser 20 caractères"
                             },
@@ -61,6 +69,7 @@ const LogInForm: React.FC = () => {
                         placeholder="| Ecrivez votre mot de passe ici..."
                         className="w-full border py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-12"
                     />
+                    <p className='text-red-500 text-xl text-center'>{ errors.password?.message }</p>
                 </div>
 
                 <div className="flex items-center justify-between text-sm">
