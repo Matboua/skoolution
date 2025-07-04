@@ -24,11 +24,11 @@ export class NiveauController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateNiveauDto: UpdateNiveauDto) {
-    return this.niveauService.update(+id, updateNiveauDto);
+    return this.niveauService.update(id, updateNiveauDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.niveauService.remove(+id);
+    return this.niveauService.remove(id);
   }
 }

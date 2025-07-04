@@ -1,9 +1,7 @@
 import { Controller, Get, Param, UseGuards, Query } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AdaptiveQuizAnalyticsService } from './adaptive-quiz-analytics.service';
 
 @Controller('adaptive-quiz')
-@UseGuards(JwtAuthGuard)
 export class AdaptiveQuizController {
   constructor(private readonly analyticsService: AdaptiveQuizAnalyticsService) {}
 

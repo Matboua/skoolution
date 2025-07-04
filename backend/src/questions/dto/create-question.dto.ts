@@ -1,5 +1,5 @@
 import { IsString, IsNumber, IsArray, IsOptional, IsIn, Min, Max, Length } from 'class-validator';
-import { QuestionSource } from '../../types/schema.types';
+// import { QuestionSource } from '../../types/schema.types';
 
 export class CreateQuestionDto {
   @IsString()
@@ -29,8 +29,8 @@ export class CreateQuestionDto {
   @IsOptional()
   topic?: string;
 
-  @IsIn([QuestionSource.AI, QuestionSource.MANUAL])
-  source: QuestionSource;
+  // @IsIn([QuestionSource.AI, QuestionSource.MANUAL])
+  // source: QuestionSource;
 
   @IsString()
   domaine: string;
