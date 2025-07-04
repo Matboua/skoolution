@@ -4,7 +4,6 @@ import {
 	faGoogle,
 	faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
-import { Check } from "lucide-react";
 import Register_form from "../components/auth/Register_form";
 import Link from "next/link";
 

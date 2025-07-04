@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import bgImage from "@/public/assets/signInImage1.png";
+import bgImage from "../../public/assets/signInImage1.png";
 export default function LoginPage() {
 	return (
 		<div className="min-h-screen flex flex-col md:flex-row h-screen">
