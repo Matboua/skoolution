@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import * as ReactHookForm from 'react-hook-form';
+import { login } from '../../../actions/login';
 
 const { useForm } = ReactHookForm;
 
@@ -13,8 +14,13 @@ type FormData = {
 
 const LogInForm: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
-    const submith = async () => {
-
+    const submith = async (Info: FormData) => {
+        try {
+            const response = await login(Info.email, Info.password);
+            console.log("Login successful:", response);
+        } catch (error) {
+            console.error("Login failed:", error);
+        }
     }
     return (
         <>
@@ -40,8 +46,8 @@ const LogInForm: React.FC = () => {
                         placeholder=" | Ecrivez votre email ici..."
                         className="w-full border  py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-12"
                     />
-                    <p  className='text-red-500 text-xl text-center'>{ errors.email?.message }</p>
-                    
+                    <p className='text-red-500 text-xl text-center'>{errors.email?.message}</p>
+
                 </div>
 
                 <div className="relative">
@@ -69,7 +75,7 @@ const LogInForm: React.FC = () => {
                         placeholder="| Ecrivez votre mot de passe ici..."
                         className="w-full border py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-12"
                     />
-                    <p className='text-red-500 text-xl text-center'>{ errors.password?.message }</p>
+                    <p className='text-red-500 text-xl text-center'>{errors.password?.message}</p>
                 </div>
 
                 <div className="flex items-center justify-between text-sm">
