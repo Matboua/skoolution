@@ -19,9 +19,13 @@ const LogInForm: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const submith = async (Info: FormData) => {
         try {
+            setIsLoading(true);
+            setError(null);
             const response = await login(Info.email, Info.password);
+            setIsLoading(false);
             console.log("Login successful:", response);
         } catch (error) {
+            setIsLoading(false);
             console.log(error?.response.data.error);
             setError(error?.response.data.error || "Une erreur s'est produite lors de la connexion.");
         }
@@ -100,7 +104,16 @@ const LogInForm: React.FC = () => {
                     type="submit"
                     className="w-full bg-[#0047BA] text-white py-2 rounded-md hover:bg-gray-300 transition"
                 >
-                    Se Connecter
+                    {isLoading ? (
+                        <span className="flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" >
+                                <circle fill="#7FD2FF" stroke="#7FD2FF" stroke-width="2" r="15" cx="40" cy="65">
+                                    <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate></circle><circle fill="#7FD2FF" stroke="#7FD2FF" stroke-width="2" r="15" cx="100" cy="65"><animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate></circle><circle fill="#7FD2FF" stroke="#7FD2FF" stroke-width="2" r="15" cx="160" cy="65"><animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0">
+                                    </animate>
+                                </circle>
+                            </svg>
+                        </span>
+                    ) : "Se Connecter"}
                 </button>
 
                 <div className="flex items-center my-4">
