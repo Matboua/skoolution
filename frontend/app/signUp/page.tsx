@@ -8,11 +8,14 @@ import Link from "next/link";
 import NavButtons from '../components/Signupomponents/NavButtons';
 import { useStepStore, StepStore } from "../../stateManagment/stepStor";
 import { useSignUpStore } from "../../stateManagment/signupStor";
+import { signUp } from "../../actions/signUp";
+import { SignUpStore } from "../../stateManagment/signupStor";
 
 export default function LoginPage() {
     const containerRef = useRef(null);
     const { counter, increment, decrement }: StepStore = useStepStore()
     const { Errors } = useSignUpStore();
+    const { signUpData } = useSignUpStore() ;
 
     const scrollToStep = (index: number) => {
         if (containerRef.current) {
@@ -80,7 +83,7 @@ export default function LoginPage() {
 
                     <button
                         className="w-full text-white bg-[#054BB4] py-2 rounded-md hover:bg-blue-600 transition flex gap-2 justify-center"
-                        onClick={() => { counter < 3 ? (increment(), scrollToStep(counter + 1)) : null }}
+                        onClick={() => { counter < 2 ? (increment(), scrollToStep(counter + 1)) : signUp(signUpData) }}
                         disabled={Object.keys(Errors).length > 0}
                     >
                         Suivant

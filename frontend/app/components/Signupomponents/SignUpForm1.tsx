@@ -6,13 +6,14 @@ import { useSignUpStore } from "../../../stateManagment/signupStor"
 
 const SignUpForm1 = () => {
     const { counter } = useStepStore();
-    const { clearError, setError } = useSignUpStore()
+    const { clearError, setError, setSignUpData } = useSignUpStore()
 
     const {
         register,
         formState: { errors },
         trigger,
-        getFieldState
+        getFieldState,
+        getValues
     } = useForm();
 
     const handleBlur = async (propName: string) => {
@@ -22,6 +23,8 @@ const SignUpForm1 = () => {
             setError(propName, fieldState.error.message);
         } else {
             clearError(propName);
+            const value = getValues(propName);
+            setSignUpData(propName, value);
         }
     };
 

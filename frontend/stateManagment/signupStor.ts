@@ -5,6 +5,8 @@ import { create } from "zustand";
 export interface SignUpStore {
     counter: number;
     Errors: { [key: string]: string };
+    signUpData?: { [key: string]: string };
+    setSignUpData: (field: string, value: string) => void;
     setError: (field: string, message: string) => void;
     clearError: (field: string) => void;
 }
@@ -22,5 +24,10 @@ export const useSignUpStore = create<SignUpStore>((set) => ({
             const { [field]: _, ...rest } = state.Errors;
             return { Errors: rest };
         });
+    },
+    setSignUpData(field, value) {
+        set((state) => ({
+            signUpData: { ...state.signUpData, [field]: value },
+        }));
     },
 }))

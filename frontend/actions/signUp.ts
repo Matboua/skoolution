@@ -1,8 +1,9 @@
+"use server";
 import { axiosConfig } from "../config/axiosConfig";
 import { signupFormData } from "../types/formDatas";
 
 
-export const login = async (FormData: signupFormData) => {
+export const signUp = async (FormData: signupFormData) => {
     try {
         const response = await axiosConfig.post("/user/signup", {
             nom: FormData.nom,
