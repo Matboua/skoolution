@@ -6,19 +6,15 @@ import * as ReactHookForm from 'react-hook-form';
 import { login } from '../../../actions/login';
 import { useState } from 'react';
 import { setToken } from '../../../helpers/HadelToken';
+import { LogInFormData }  from '../../../types/formDatas';
 
 const { useForm } = ReactHookForm;
 
-type FormData = {
-    email: string;
-    password: string;
-};
-
 const LogInForm: React.FC = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const { register, handleSubmit, formState: { errors } } = useForm<LogInFormData>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-    const submith = async (Info: FormData) => {
+    const submith = async (Info: LogInFormData) => {
         try {
             setIsLoading(true);
             setError(null);
@@ -154,7 +150,7 @@ const LogInForm: React.FC = () => {
                 </div>
                 <p className="text-center text-sm mt-6 text-gray-500">
                     Avez-vous déjà un compte ?{" "}
-                    <Link href="register" className="text-blue-600 hover:underline">
+                    <Link href="signUp" className="text-blue-600 hover:underline">
                         Cliquez ici!
                     </Link>
                 </p>
