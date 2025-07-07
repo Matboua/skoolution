@@ -1,6 +1,6 @@
 import bgImage from "../../public/assets/signInImage1.png";
 import LogInForm from "../components/login/logInForm";
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 
 export default function LoginPage() {
 	return (
