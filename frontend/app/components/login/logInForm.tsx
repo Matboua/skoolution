@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import * as ReactHookForm from 'react-hook-form';
 import { login } from '../../../actions/login';
+import { useState } from 'react';
 
 const { useForm } = ReactHookForm;
 
@@ -14,14 +15,15 @@ type FormData = {
 
 const LogInForm: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
     const submith = async (Info: FormData) => {
         try {
-            console.log("Submitting form with data:", Info);
             const response = await login(Info.email, Info.password);
-            console.log("data was send ");
             console.log("Login successful:", response);
         } catch (error) {
-            console.log("Login failed:", error);
+            console.log(error?.response.data.error);
+            setError(error?.response.data.error || "Une erreur s'est produite lors de la connexion.");
         }
     }
     return (
@@ -89,7 +91,11 @@ const LogInForm: React.FC = () => {
                         Mot de passe oublié ?
                     </a>
                 </div>
-
+                {error && (
+                    <div className="mt-4 text-red-500 text-center">
+                        {error}
+                    </div>
+                )}
                 <button
                     type="submit"
                     className="w-full bg-[#0047BA] text-white py-2 rounded-md hover:bg-gray-300 transition"
@@ -138,6 +144,7 @@ const LogInForm: React.FC = () => {
                     </Link>
                 </p>
             </form>
+
         </>
     )
 }
