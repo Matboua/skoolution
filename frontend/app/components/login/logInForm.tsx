@@ -5,7 +5,7 @@ import Link from 'next/link'
 import * as ReactHookForm from 'react-hook-form';
 import { login } from '../../../actions/login';
 import { useState } from 'react';
-import { setToken } from '../../../helpers/setToken';
+import { setToken } from '../../../helpers/HadelToken';
 
 const { useForm } = ReactHookForm;
 

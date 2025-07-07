@@ -14,3 +14,8 @@ export const setToken = async (token: string)=> {
         maxAge: 60 * 60 * 24 * 7,
     });
 }
+export const getToken = async ()=>{
+    const cookieStore = await cookies();
+    const token = cookieStore.get('token');
+    return token ? token.value : null;
+}
