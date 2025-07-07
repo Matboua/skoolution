@@ -6,7 +6,7 @@ export interface signupFormData {
     nom?: string
     prenom?: string
     mail?: string
-    pwd?: string
+    password?: string
     ville?: string
     tel?: string
     type?: string
