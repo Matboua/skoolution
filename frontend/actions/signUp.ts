@@ -4,8 +4,9 @@ import { signupFormData } from "../types/formDatas";
 
 
 export const signUp = async (FormData: signupFormData) => {
+    console.log("FormData");
     try {
-        const response = await axiosConfig.post("/user/signup", {
+        const response = axiosConfig.post("/user/signup", {
             nom: FormData.nom,
             prenom: FormData.prenom,
             mail: FormData.mail,

@@ -3,11 +3,11 @@ export type LogInFormData = {
     password: string;
 };
 export interface signupFormData {
-    nom: string
-    prenom: string
-    mail: string
-    pwd: string
-    ville: string
-    tel: string
-    type: string
+    nom?: string
+    prenom?: string
+    mail?: string
+    pwd?: string
+    ville?: string
+    tel?: string
+    type?: string
 }

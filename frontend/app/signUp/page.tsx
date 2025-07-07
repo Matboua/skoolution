@@ -83,7 +83,7 @@ export default function LoginPage() {
 
                     <button
                         className="w-full text-white bg-[#054BB4] py-2 rounded-md hover:bg-blue-600 transition flex gap-2 justify-center"
-                        onClick={() => { counter < 2 ? (increment(), scrollToStep(counter + 1)) : signUp(signUpData) }}
+                        onClick={() => { counter < 2 ? (increment(), scrollToStep(counter + 1)) : signUp(signUpData).then(()=>{}) }}
                         disabled={Object.keys(Errors).length > 0}
                     >
                         Suivant

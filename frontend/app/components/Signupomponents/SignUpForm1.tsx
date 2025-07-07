@@ -129,7 +129,7 @@ const SignUpForm1 = () => {
                             <p className="ml-5 text-gray-500">Mot de passe</p>
                             <input
                                 type="password"
-                                {...register("password", {
+                                {...register("pwd", {
                                     required: "Mot de passe requis",
                                     minLength: { value: 6, message: "Au moins 6 caractères" },
                                 })}
