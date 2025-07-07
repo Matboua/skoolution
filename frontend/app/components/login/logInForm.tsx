@@ -23,7 +23,7 @@ const LogInForm: React.FC = () => {
             setError(null);
             const response = await login(Info.email, Info.password);
             setIsLoading(false);
-            console.log("Login successful:", response);
+            console.log("Login successful:", response?.token);
         } catch (error) {
             setIsLoading(false);
             console.log(error?.response.data.error);
@@ -105,14 +105,15 @@ const LogInForm: React.FC = () => {
                     className="w-full bg-[#0047BA] text-white py-2 rounded-md hover:bg-gray-300 transition"
                 >
                     {isLoading ? (
-                        <span className="flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" >
-                                <circle fill="#7FD2FF" stroke="#7FD2FF" stroke-width="2" r="15" cx="40" cy="65">
-                                    <animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate></circle><circle fill="#7FD2FF" stroke="#7FD2FF" stroke-width="2" r="15" cx="100" cy="65"><animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate></circle><circle fill="#7FD2FF" stroke="#7FD2FF" stroke-width="2" r="15" cx="160" cy="65"><animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0">
-                                    </animate>
-                                </circle>
-                            </svg>
-                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" strokeWidth="2"
+                            strokeLinecap="round" strokeLinejoin="round"
+                            className="lucide lucide-loader-circle-icon lucide-loader-circle animate-spin mx-auto">
+                            <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                        </svg>
+                        
+
                     ) : "Se Connecter"}
                 </button>
 
