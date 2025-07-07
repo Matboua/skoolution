@@ -5,6 +5,7 @@ import Link from 'next/link'
 import * as ReactHookForm from 'react-hook-form';
 import { login } from '../../../actions/login';
 import { useState } from 'react';
+import { setToken } from '../../../helpers/setToken';
 
 const { useForm } = ReactHookForm;
 
@@ -22,8 +23,8 @@ const LogInForm: React.FC = () => {
             setIsLoading(true);
             setError(null);
             const response = await login(Info.email, Info.password);
+            await setToken(response?.token);
             setIsLoading(false);
-            console.log("Login successful:", response?.token);
         } catch (error) {
             setIsLoading(false);
             console.log(error?.response.data.error);
@@ -112,7 +113,7 @@ const LogInForm: React.FC = () => {
                             className="lucide lucide-loader-circle-icon lucide-loader-circle animate-spin mx-auto">
                             <path d="M21 12a9 9 0 1 1-6.219-8.56" />
                         </svg>
-                        
+
 
                     ) : "Se Connecter"}
                 </button>
