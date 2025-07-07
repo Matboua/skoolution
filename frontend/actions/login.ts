@@ -4,7 +4,7 @@ export const login = async (email: string, password: string) => {
     try {
         const response = await axiosConfig.post("/user/login ", {
             email,
-            password,
+            pwd:password,
         });
         return response.data;
     } catch (error) {

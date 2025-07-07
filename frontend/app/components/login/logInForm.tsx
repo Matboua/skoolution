@@ -16,10 +16,12 @@ const LogInForm: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
     const submith = async (Info: FormData) => {
         try {
+            console.log("Submitting form with data:", Info);
             const response = await login(Info.email, Info.password);
+            console.log("data was send ");
             console.log("Login successful:", response);
         } catch (error) {
-            console.error("Login failed:", error);
+            console.log("Login failed:", error);
         }
     }
     return (

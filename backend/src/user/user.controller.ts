@@ -24,9 +24,14 @@ export class UserController {
     }
   }
   @Post("login")
-  logIn(@Body() user: loginDTO, @Res() res: Response) {
+  async logIn(@Body() user: loginDTO, @Res() res: Response) {
     try {
-
+      const response = await this.userService.login(user);
+      if (response?.success) {
+        return res.status(200).json(response)
+      } else {
+        return res.status(400).json(response)
+      }
     } catch (error) {
       console.log(error);
     }
