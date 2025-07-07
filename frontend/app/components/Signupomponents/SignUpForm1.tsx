@@ -24,6 +24,8 @@ const SignUpForm1 = () => {
         } else {
             clearError(propName);
             const value = getValues(propName);
+            console.log(value);
+            
             setSignUpData(propName, value);
         }
     };
@@ -52,14 +54,14 @@ const SignUpForm1 = () => {
                         <div className="relative">
                             <p className="ml-5 text-gray-500">Numéro de téléphone</p>
                             <input
-                                {...register("telephone", {
+                                {...register("tel", {
                                     required: "Numéro requis",
                                     pattern: {
                                         value: /^[0-9]{10}$/,
                                         message: "Numéro invalide",
                                     },
                                 })}
-                                onBlur={() => handleBlur("telephone")}
+                                onBlur={() => handleBlur("tel")}
                                 placeholder="Ecrivez votre numéro..."
                                 className={`w-full border py-2 px-3 focus:outline-none focus:ring-2 ${errors.telephone ? "ring-red-500" : "ring-blue-500"
                                     } pl-12`}
@@ -76,7 +78,7 @@ const SignUpForm1 = () => {
                             <p className="ml-5 text-gray-500">Lycée</p>
                             <select
                                 {...register("lycee", { required: "Lycée est requis" })}
-                                onBlur={() => handleBlur("telephone")}
+                                onBlur={() => handleBlur("lycee")}
                                 className={`w-full border py-2 px-3 focus:outline-none focus:ring-2 ${errors.lycee ? "ring-red-500" : "ring-blue-500"
                                     } pl-12 appearance-none`}
                             >
@@ -110,14 +112,14 @@ const SignUpForm1 = () => {
                         <div className="relative">
                             <p className="ml-5 text-gray-500">Adresse email</p>
                             <input
-                                {...register("email", {
+                                {...register("mail", {
                                     required: "Email requis",
                                     pattern: {
                                         value: /^[^@ ]+@[^@ ]+\.[^@ ]+$/,
                                         message: "Email invalide",
                                     },
                                 })}
-                                onBlur={() => handleBlur("email")}
+                                onBlur={() => handleBlur("mail")}
                                 placeholder="Ecrivez votre adresse email..."
                                 className={`w-full border py-2 px-3 focus:outline-none focus:ring-2 ${errors.email ? "ring-red-500" : "ring-blue-500"
                                     } pl-12`}

@@ -11,7 +11,7 @@ export const signUp = async (FormData: signupFormData) => {
             prenom: "FormData.prenom",
             mail: FormData.mail,
             pwd: FormData.password,
-            ville: FormData.ville,
+            ville: "FormData.ville",
             tel: FormData.tel,
             type: FormData.type
         });
