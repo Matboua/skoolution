@@ -13,8 +13,10 @@ export const signUp = async (FormData: signupFormData) => {
             pwd: FormData.password,
             ville: "FormData.ville",
             tel: FormData.tel,
-            type: FormData.type
+            type: "Elev"
         });
+        console.log("Sign-up successful:", response.data);
+        
         const result = await axios.post("http://localhost:3000/api/signup", response.data.token);
         return result.data;
     } catch (error) {
