@@ -7,6 +7,7 @@ import { login } from '../../../actions/login';
 import { useState } from 'react';
 import { setToken } from '../../../helpers/HadelToken';
 import { LogInFormData }  from '../../../types/formDatas';
+import { useRouter } from 'next/navigation';
 
 const { useForm } = ReactHookForm;
 
@@ -14,6 +15,7 @@ const LogInForm: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LogInFormData>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const Router = useRouter();
     const submith = async (Info: LogInFormData) => {
         try {
             setIsLoading(true);
@@ -21,6 +23,7 @@ const LogInForm: React.FC = () => {
             const response = await login(Info.email, Info.password);
             await setToken(response?.token);
             setIsLoading(false);
+            Router.replace("/dashboard");
         } catch (error) {
             setIsLoading(false);
             console.log(error?.response.data.error);

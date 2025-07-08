@@ -1,9 +1,11 @@
 import axios from "axios";
 import { axiosConfig } from "../config/axiosConfig";
 import { signupFormData } from "../types/formDatas";
+import { useRouter } from "next/navigation";
 
 
 export const signUp = async (FormData: signupFormData) => {
+    const Router = useRouter();
     console.log(FormData);
     try {
         const response = await axiosConfig.post("/user/signup", {
@@ -19,6 +21,7 @@ export const signUp = async (FormData: signupFormData) => {
         
         const result = await axios.post("http://localhost:3000/api/signup", response.data.token);
         return result.data;
+        Router.replace("/dashboard");
     } catch (error) {
         console.log("Sign-up failed:", error);
     }
