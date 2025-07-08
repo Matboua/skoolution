@@ -153,7 +153,7 @@ const LogInForm: React.FC = () => {
                 </div>
                 <p className="text-center text-sm mt-6 text-gray-500">
                     Avez-vous déjà un compte ?{" "}
-                    <Link href="signUp" className="text-blue-600 hover:underline">
+                    <Link href="signup" className="text-blue-600 hover:underline">
                         Cliquez ici!
                     </Link>
                 </p>
