@@ -2,7 +2,7 @@ import Header from "../components/client/Header";
 import Sidebar from "../components/client/Sidebar";
 import Home from "../components/client/Home";
 
-export default function page() {
+export default async function page() {
 	return (
 		<section className="flex h-dvh overflow-hidden">
 			<Sidebar />
