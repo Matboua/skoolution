@@ -1,12 +1,9 @@
 import axios from "axios";
 import { axiosConfig } from "../config/axiosConfig";
 import { signupFormData } from "../types/formDatas";
-import { useRouter } from "next/navigation";
 
 
 export const signUp = async (FormData: signupFormData) => {
-    const Router = useRouter();
-    console.log(FormData);
     try {
         const response = await axiosConfig.post("/user/signup", {
             nom: FormData.nom,
@@ -17,12 +14,11 @@ export const signUp = async (FormData: signupFormData) => {
             tel: FormData.tel,
             type: "Elev"
         });
-        console.log("Sign-up successful:", response.data);
+        const result = await axios.post("http://localhost:3000/api/regester", response.data);
+        console.log(response);
         
-        const result = await axios.post("http://localhost:3000/api/signup", response.data.token);
-        return result.data;
-        Router.replace("/dashboard");
+        return response;
     } catch (error) {
-        console.log("Sign-up failed:", error);
+        return error
     }
 }
